@@ -1,0 +1,17 @@
+<h1>Public::Children#edit(お子様情報編集画面)</h1>
+<p>Find me in app/views/public/children/edit.html.erb</p>
+
+
+<%= form_with model: @child do |f| %>
+
+  <div>
+    <%= f.label :nickname, "ニックネーム" %>
+    <%= f.text_field :nickname %>
+
+    <%= f.label :birthday, "生年月日（任意）" %>
+    <%= f.date_field :birth %>
+
+    <%= f.submit "更新" %>
+  </div>
+
+<% end %>
