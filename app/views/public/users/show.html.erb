@@ -1,2 +1,19 @@
-<h1>Public::Users#show</h1>
+<h1>Public::Users#show(マイページ)</h1>
 <p>Find me in app/views/public/users/show.html.erb</p>
+
+
+
+<!--お子様情報が登録されている場合は表示-->
+<h2>こどもたち:</h2>
+<% if @user.children.any? %>
+  <ul>
+    <% @user.children.each do |child| %>
+      <li><%= child.nickname %></li>
+      <%= link_to "編集", edit_child_path(child) %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>登録されていません</p>
+<% end %>
+
+<%= link_to "新規登録", new_child_path %>

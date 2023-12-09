@@ -24,8 +24,7 @@ class User < ApplicationRecord
   # フォロー/フォロワー機能　ここまで
   
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
-  # validates :introduction, length: {maximum: 50}
-  # 自己紹介カラム忘れてる
+  validates :introduction, length: { maximum: 200 }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
