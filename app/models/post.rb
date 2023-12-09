@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   
+  has_one_attached :post_image
+  
   belongs_to :user
+  belongs_to :child
   has_many :favorites, dependent: :destroy
   has_many :comments,  dependent: :destroy
 
@@ -8,6 +11,10 @@ class Post < ApplicationRecord
   
   enum category: { everyday: 0, success: 1, graduation: 2 }
 
+  # def get_post_image
+  #   (post_image.attached?) ? post_image : 'no_image.jpg'
+  # end
+  
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

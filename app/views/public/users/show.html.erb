@@ -1,7 +1,7 @@
 <h1>Public::Users#show(マイページ)</h1>
 <p>Find me in app/views/public/users/show.html.erb</p>
 
-
+<%= render 'layouts/form', post: @post %>
 
 <!--お子様情報が登録されている場合は表示-->
 <h2>こどもたち:</h2>
@@ -17,3 +17,5 @@
 <% end %>
 
 <%= link_to "新規登録", new_child_path %>
+
+<%= render 'layouts/post_index', posts: @posts %>
