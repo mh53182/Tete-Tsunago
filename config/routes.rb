@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users,skip: [:passwords], controllers: {
   registrations: 'public/registrations',
   sessions: 'public/sessions'
 }
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: 'admin/sessions'
 }
 
@@ -21,17 +21,19 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   scope module: :public do
     resources :users, only: [:show, :edit, :update] do
-      get   'favorites' => 'users#favorites'
-      get   'confirm'   => 'users#confirm'
-      patch 'withdraw'  => 'users#withdraw'
-      resource :relationship, only: [:create, :destroy]
+      member do
+        get   'favorites' => 'users#favorites'
+        get   'confirm'   => 'users#confirm'
+        patch 'withdraw'  => 'users#withdraw'
+        resource :relationship, only: [:create, :destroy]
+      end
     end
-    
-    resources   :posts,    only:[:index, :create, :edit, :update, :destroy] do
+
+    resources   :posts,    only: [:index, :show, :create, :edit, :update, :destroy] do
       resource  :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    
+
     resources :children, only: [:new, :create, :edit, :update]
   end
 

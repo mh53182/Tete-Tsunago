@@ -4,6 +4,12 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @comment = Comment.new
+  end
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
