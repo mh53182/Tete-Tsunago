@@ -1,0 +1,17 @@
+<% users.each do |user| %>
+  <%= link_to user_path(user) do %>
+    <div class="card w-50 mt-4 shadow-lg">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <%= image_tag user.get_profile_image %>
+          </div>
+          <div class="col-md-9 offset-1">
+            <%= user.name %>
+            <%= user.introduction %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

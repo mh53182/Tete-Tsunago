@@ -1,0 +1,50 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <div class="card w-70 mt-4 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-11">
+              <%= link_to user_path(@user) do %>
+                <%= image_tag @user.get_profile_image %><%= @user.name %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag @post.get_post_image %>
+            </div>
+            <div class="col-md-7 offset-1">
+              <%= @post.body %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <p>カテゴリ：<%= @post.category_i18n %></p>
+            </div>
+            <div class="col-md-4">
+              <p>お子様：<%= @post.child.nickname %></p>
+            </div>
+            <div class="col-md-4">
+              <p>いいね：</p>
+              <span id="favorite_buttons_<%= @post.id %>">
+                <%= render "public/favorites/favorite", post: @post %>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-11">
+              <p>コメント:</p>
+              <div id="post-comments">
+                <%= render "public/comments/comments", post: @post %>
+              </div>
+              <div id="comment-form">
+                <%= render "public/comments/form", post: @post, comment: @comment %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

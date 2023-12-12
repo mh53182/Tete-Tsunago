@@ -1,2 +1,22 @@
-<h1>Public::Posts#edit</h1>
+<h1>Public::Posts#edit(投稿編集)</h1>
 <p>Find me in app/views/public/posts/edit.html.erb</p>
+
+
+<%= form_with model: @post do |f| %>
+  <%= f.label :body, "本文" %>
+  <%= f.text_area :body %>
+  
+  <%= f.label :post_image, "画像" %>
+  <%= f.file_field :post_image, accept: "image/*" %>
+  
+  <%= f.label :category, "カテゴリ" %>
+  <%= f.select :category,
+              Post.categories.keys.map { |k| [I18n.t("enums.post.category.#{k}"), k] },
+              { selected: "everyday" } %>
+  
+  <%= f.label :child_id, "お子様" %>
+  <%= f.collection_select :child_id, 
+                         current_user.children, :id, :nickname %>
+
+  <%= f.submit "更新する" %>
+<% end %>

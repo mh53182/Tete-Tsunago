@@ -1,0 +1,3 @@
+$('#post-comments').html("<%= j(render "comments/comments", post: @post) %>");
+$('#comment_count').html("<%= @post.comments.count %>");
+$("textarea").val('');

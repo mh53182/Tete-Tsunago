@@ -1,7 +1,7 @@
 ja:
   enums:
-    order:
-      payment_method:
+    post:
+      category:
         everyday: "日常"
         success: "できた"
         graduation: "卒業"

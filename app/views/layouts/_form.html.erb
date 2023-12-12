@@ -1,0 +1,27 @@
+<h3>新規投稿</h3>
+  
+<%= form_with model: post do |f| %>
+  <div class="form-group">
+    <%= f.label :body, "本文" %>
+    <%= f.text_area :body, placeholder:"ここに本文を記入します" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :post_image, "画像" %>
+    <%= f.file_field :post_image, accept: "image/*" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category, "カテゴリ" %>
+    <%= f.select :category,
+                Post.categories.keys.map { |k| [I18n.t("enums.post.category.#{k}"), k] },
+                { selected: "everyday" } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :child_id, "お子様" %>
+    <%= f.collection_select :child_id, 
+                           current_user.children, :id, :nickname,
+                           include_blank: "お子様タグをつける場合は選択してください" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "投稿する" %>
+  </div>
+<% end %>

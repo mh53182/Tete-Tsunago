@@ -1,0 +1,6 @@
+<div>
+  <%= form_with model:[post, comment], local: false do |f| %>
+    <%= f.text_area :body, rows: '3', class: "w-100", id: "comment_textarea" %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
