@@ -1,4 +1,4 @@
-<div class="card w-45 mt-4 shadow-lg">
+<div class="card w-50 mt-4 shadow-lg">
 
 
 
@@ -8,7 +8,7 @@
       <%= post.body %>
       <%= post.category_i18n %>
       <%= post.child.nickname %>
-      <%= link_to "詳しく見る", post_path %>
+      <%= link_to "詳しく見る", post_path(post.id) %>
       <% if post.user == current_user %>
         <%= link_to "編集", edit_post_path(post.id) %>
         <%= link_to "削除", post_path(post.id), method: :delete, 'data-confirm' => "本当に削除しますか？" %>

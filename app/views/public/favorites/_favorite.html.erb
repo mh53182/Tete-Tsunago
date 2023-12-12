@@ -1,13 +1,13 @@
 <% if post.favorited_by?(current_user) %>
   <P>
     <%= link_to post_favorite_path(post.id), method: :delete, remote: true,data: {"turbolinks" => false} do %>
-      <%= image_tag('not_favorited.png') %> <%= post.favorites.count %>
+      <%= image_tag('favorited.png') %> <%= post.favorites.count %>
     <% end %>
   </P>
   <% else %>
   <p>
     <%= link_to post_favorite_path(post.id), method: :post, remote: true,data: {"turbolinks" => false} do %>
-      <%= image_tag('favorited.png') %> <%= post.favorites.count %>
+      <%= image_tag('not_favorited.png') %> <%= post.favorites.count %>
     <% end %>
   </p>
 <% end %>

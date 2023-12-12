@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :users,    only:[:index, :show, :edit, :update]
     resources :comments, only:[:index, :destroy]
+    get 'search' => 'searches#search'
   end
 
   scope module: :public do
@@ -35,6 +36,9 @@ Rails.application.routes.draw do
     end
 
     resources :children, only: [:new, :create, :edit, :update]
+    
+    get 'search' => 'searches#search'
+    
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
