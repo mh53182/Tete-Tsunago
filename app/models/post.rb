@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   enum category: { everyday: 0, success: 1, graduation: 2 }
 
   def get_post_image
-    (post_image.attached?) ? post_image : 'no_post_image.pjpg'
+    (post_image.attached?) ? post_image : 'no_post_image.jpg'
   end
 
   def favorited_by?(user)
