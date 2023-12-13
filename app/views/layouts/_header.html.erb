@@ -51,7 +51,11 @@
           </li>
         <% end %>
         </ul>
-        <%= render 'public/searches/form' %>
+        <% if admin_signed_in? %>
+          <%= render 'admin/searches/form' %>
+        <% else %>
+          <%= render 'public/searches/form' %>
+        <% end %>
       </div>
     </div>
   </nav>
