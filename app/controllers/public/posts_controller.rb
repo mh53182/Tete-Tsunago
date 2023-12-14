@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @post = Post.new
     @posts = Post.all
@@ -18,7 +20,8 @@ class Public::PostsController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:alert] = "投稿内容に不備があります"
-      redirect_to request.referer　# 各ビュー完成後にrenderの分岐を記述する。flash.nowに変更する。
+      redirect_to request.referer
+      # 各ビュー完成後にrenderの分岐を記述する。flash.nowに変更する。
     end
   end
 

@@ -31,7 +31,7 @@
             <%= link_to"ユーザー一覧",admin_users_path, class: 'nav-link' %>
           </li>
            <li>
-            <%= link_to"ログアウト",destroy_admin_session_path,method: :delete, class: 'nav-link' %>
+            <%= link_to"ログアウト",destroy_admin_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% else %>
           <li>
@@ -45,13 +45,22 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path , class: 'nav-link text-light' do %>
+            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ゲストログイン
             <% end %>
           </li>
         <% end %>
         </ul>
-        <%= render 'public/searches/form' %>
+        <% if admin_signed_in? %>
+          <%= render 'admin/searches/form' %>
+        <% else %>
+          <%= render 'public/searches/form' %>
+        <% end %>
       </div>
     </div>
   </nav>

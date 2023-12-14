@@ -1,0 +1,25 @@
+<% comments.each do |comment| %>
+
+  <table>
+    <tr>
+      <th>コメント</th>
+      <th>ユーザー</th>
+      <th>コメント元の投稿</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <%= comment.body %>
+      </td>
+      <td>
+        <%= link_to admin_user_path(comment.user) do %>
+          <%= comment.user.name %>
+        <% end %>
+        </td>
+      <td><%= comment.post.body %></td>
+      <td><%= link_to "投稿を確認する", admin_comment_path(comment) %></td>
+      <td><%= link_to "コメントを削除", admin_comment_path(comment), method: :delete, 'data-confirm' => "本当に削除しますか？" %></td>
+    </tr>
+  </table>
+<% end %>

@@ -1,2 +1,58 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.get_profile_image %><!--サイズ指定-->
+      <%= @user.name %>
+      <%= @user.introduction %>
+      <%= link_to "ユーザー情報の編集", edit_admin_user_path(@user) %>
+    </div>
+
+    <div class="col-md-3">
+      <h4>こどもたち：</h4>
+      <% if @user.children.any? %>
+        <ul>
+          <% @user.children.each do |child| %>
+            <li><%= child.nickname %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>登録されていません</p>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <h4>ステータス：</h4>
+      <% if @user.is_active == true %>
+        ・<span class="text-success">有効</span>
+      <% else %>
+        ・<span class="text-danger">退会</span>
+      <% end %>
+      <% if @user.is_public == true %>
+        ・<span class="text-success">公開</span>
+      <% else %>
+        ・<span class="text-danger">非公開</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>最近の投稿</h4>
+      <% @posts.each do |post| %>
+        <div class="post_card">
+          <%= image_tag post.get_post_image %>
+          <%= post.body %>
+          <%= post.category_i18n %>
+          <%= post.child.nickname %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-5 offset-1">
+      <% @comments.each do |comment| %>
+        <div class="comment_card">
+          <%= comment.body %>
+          <%= comment.post.body %>
+          <%= link_to "詳しく見る", admin_comment_path(comment) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,8 @@
 <div class="card w-50 mt-4 shadow-lg">
 
-
-
   <% posts.each do |post| %>
     <div class="post_card">
-      <%#= image_tag post.post_image %>
+      <%= image_tag post.get_post_image %>
       <%= post.body %>
       <%= post.category_i18n %>
       <%= post.child.nickname %>
@@ -15,7 +13,5 @@
       <% end %>
     </div>
   <% end %>
-
-
 
 </div>

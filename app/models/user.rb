@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships,  source: :followed
   # 自分をフォローしてくれているユーザーの取得
   has_many :followers,  through: :passive_relationships, source: :follower
-  
+
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy
   end
-  
+
   def following?(user)
     followings.include?(user)
   end
@@ -40,6 +40,22 @@ class User < ApplicationRecord
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_profile_image.png'
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+  end
+  
+  def guest_user?
+    email == 'guest@example.com'
+  end
+
+  def not_current_user?
+    user = User.find(params[:id])
+    user.id != current_user.id
   end
 
   def self.search_for(key_word)
