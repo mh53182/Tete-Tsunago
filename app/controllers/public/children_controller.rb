@@ -1,4 +1,6 @@
 class Public::ChildrenController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @child = Child.new
   end
