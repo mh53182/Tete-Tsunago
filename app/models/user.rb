@@ -38,6 +38,9 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
 
+  # 公開アカウントの取得
+  scope :is_public, -> { where(is_public: true) }
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_profile_image.png'
   end
@@ -46,9 +49,10 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲスト"
+      user.introduction = "ゲストユーザーです"
     end
   end
-  
+
   def guest_user?
     email == 'guest@example.com'
   end

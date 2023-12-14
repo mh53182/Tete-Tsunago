@@ -11,6 +11,9 @@ class Post < ApplicationRecord
 
   enum category: { everyday: 0, success: 1, graduation: 2 }
 
+  # 公開アカウントによる投稿の取得
+  scope :from_public_users, -> { joins(:user).where(users: { is_public: true }) }
+
   def get_post_image
     (post_image.attached?) ? post_image : 'no_post_image.jpg'
   end

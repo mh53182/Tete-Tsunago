@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  
+
   def index
     @post = Post.new
     @posts = Post.all
@@ -9,6 +9,11 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+
+    # 非公開アカウントによる投稿詳細への直アクセスを制限
+    unless @user.is_public || @user == current_user
+      redirect_to posts_path, alert: "この投稿は非公開です"
+    end
     @comment = Comment.new
   end
 
