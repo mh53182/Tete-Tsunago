@@ -1,0 +1,14 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-10">
+      <% if @model == 'user' %>
+        <h3>"<%= @key_word %>" のユーザー検索結果</h3>
+        <%= render 'public/searches/user_index', users: @records %>
+
+      <% elsif @model == 'comment' %>
+        <h3>"<%= @key_word %>" のコメント検索結果</h3>
+        <%= render 'admin/comments/index', comments: @records %>
+      <% end %>
+    </div>
+  </div>
+</div>
