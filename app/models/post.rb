@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_one_attached :post_image
 
   belongs_to :user
-  belongs_to :child
+  belongs_to :child,   optional: true
   has_many :favorites, dependent: :destroy
   has_many :comments,  dependent: :destroy
 

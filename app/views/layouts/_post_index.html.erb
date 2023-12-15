@@ -5,7 +5,9 @@
       <%= image_tag post.get_post_image %>
       <%= post.body %>
       <%= post.category_i18n %>
-      <%= post.child.nickname %>
+      <% if post.child.present? %>
+        <%= post.child.nickname %>
+      <% end %>
       <%= link_to "詳しく見る", post_path(post.id) %>
       <% if post.user == current_user %>
         <%= link_to "編集", edit_post_path(post.id) %>

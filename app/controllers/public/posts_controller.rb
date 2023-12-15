@@ -1,9 +1,15 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :redirect_unless_post_auther, only: [:edit, :update]
 
   def index
     @post = Post.new
-    @posts = Post.all
+    # @posts = Post.all
+    if current_user
+      @posts = Post.joins(:user).where("users.is_public = ? OR users.id = ?", true, current_user.id)
+    else
+      @posts = Post.joins(:user).where(users: { is_public: true })
+    end
   end
 
   def show
@@ -55,6 +61,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:user_id, :child_id, :body, :category, :post_image)
+  end
+
+  # URL指定による他人の投稿編集制限
+  def redirect_unless_post_auther
+    post = Post.find(params[:id])
+    if post.user_id != current_user.id
+      redirect_to root_path, alert: "投稿したアカウント以外では編集はできません"
+    end
   end
 
 end
