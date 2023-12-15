@@ -25,3 +25,9 @@
     <%= f.submit "投稿する" %>
   </div>
 <% end %>
+
+<%= form_with url: posts_path, method: :get do |form| %>
+  <%= form.label :category %>
+  <%= form.select :category, Post.categories.keys.map { |category| [category.titleize, category] }, include_blank: true %>
+  <%= form.submit "検索" %>
+<% end %>

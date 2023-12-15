@@ -1,1 +1,16 @@
 @use '~bootstrap/scss/bootstrap';
+
+// 全体用
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background-color: #ffeecc;
+  color: #291b25;
+}
+
+// 

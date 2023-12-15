@@ -4,19 +4,21 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    # @posts = Post.all
-    if current_user
-      @posts = Post.joins(:user).where("users.is_public = ? OR users.id = ?", true, current_user.id)
-    else
-      @posts = Post.joins(:user).where(users: { is_public: true })
-    end
+    # 公開ユーザーの投稿、及び自分の投稿の取得
+    base_query = if current_user
+                   Post.joins(:user).where("users.is_public = ? OR users.id = ?", true, current_user.id)
+                 else
+                   Post.joins(:user).where(users: { is_public: true })
+                 end
+    # 取得したデータのカテゴリによる絞り込み
+    @posts = base_query.by_category(params[:category])
   end
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
 
-    # 非公開アカウントによる投稿詳細への直アクセスを制限
+    # 非公開アカウントの投稿詳細への直アクセスを制限
     unless @user.is_public || @user == current_user
       redirect_to posts_path, alert: "この投稿は非公開です"
     end
