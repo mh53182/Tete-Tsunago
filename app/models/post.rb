@@ -14,6 +14,9 @@ class Post < ApplicationRecord
   # 公開アカウントによる投稿の取得
   scope :from_public_users, -> { joins(:user).where(users: { is_public: true }) }
   
+  # 有効アカウントによる投稿の取得
+  scope :from_active_users, -> { joins(:user).where(users: { is_active: true }) }
+  
   # カテゴリカラムによる絞り込み
   scope :by_category, ->(category) { where(category: category) if category.present? }
 
