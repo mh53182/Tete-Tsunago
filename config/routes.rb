@@ -30,7 +30,11 @@ Rails.application.routes.draw do
         get   'favorites' => 'users#favorites'
         get   'confirm'   => 'users#confirm'
         patch 'withdraw'  => 'users#withdraw'
-        resource :relationship, only: [:create, :destroy]
+        resource :relationship, only: [:create, :destroy] do
+          member do
+            get :followings, :followers
+          end
+        end
       end
     end
 
