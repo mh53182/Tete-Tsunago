@@ -2,13 +2,13 @@
 <p>Find me in app/views/public/children/new.html.erb</p>
 
 <%= form_with model: @child do |f| %>
-
+<%= render 'layouts/errors', obj: f.object %>
   <div>
     <%= f.label :nickname, "ニックネーム" %>
     <%= f.text_field :nickname %>
 
     <%= f.label :birthday, "生年月日（任意）" %>
-    <%= f.date_field :sample_at %>
+    <%= f.date_field :birthday %>
 
     <%= f.submit "登録" %>
   </div>

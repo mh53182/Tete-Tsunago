@@ -1,4 +1,25 @@
 ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      child: "お子様"
+      post: "投稿"
+      comment: "コメント"
+      favorite: "いいね"
+    attributes:
+      user:
+        name: "ユーザー名"
+        introduction: "自己紹介"
+        is_active: "会員ステータス"
+        is_public: "公開ステータス"
+      child:
+        nickname: "ニックネーム"
+        birthday: "誕生日"
+      post:
+        body: "本文"
+        category: "カテゴリ"
+      comment:
+        body: "コメント文"
   enums:
     post:
       category:

@@ -1,14 +1,30 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  
+  before_action :redirect_unless_post_auther, only: [:edit, :update]
+
   def index
     @post = Post.new
-    @posts = Post.all
+    # 有効かつ公開ユーザーの投稿の取得
+    base_query = Post.from_active_users.from_public_users
+    
+    # 取得したクエリにログイン中ユーザーの投稿を追加
+    if current_user
+      user_posts = Post.where(user: current_user)
+      base_query = base_query.or(user_posts)
+    end
+    
+    # 上記クエリにカテゴリ絞り込みがある場合は実施し、新着順に表示
+    @posts = base_query.by_category(params[:category]).order(created_at: :desc)
   end
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+
+    # 非公開アカウントの投稿詳細への直アクセスを制限
+    unless @user.is_public || @user == current_user
+      redirect_to posts_path, alert: "この投稿は非公開です"
+    end
     @comment = Comment.new
   end
 
@@ -19,8 +35,10 @@ class Public::PostsController < ApplicationController
       flash[:notece] = "投稿しました"
       redirect_to user_path(current_user)
     else
-      flash[:alert] = "投稿内容に不備があります"
-      redirect_to request.referer
+      flash.now[:alert] = "投稿内容に不備があります"
+      @posts = Post.all
+      render :index
+      # redirect_to request.referer
       # 各ビュー完成後にrenderの分岐を記述する。flash.nowに変更する。
     end
   end
@@ -50,6 +68,14 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:user_id, :child_id, :body, :category, :post_image)
+  end
+
+  # URL指定による他人の投稿編集制限
+  def redirect_unless_post_auther
+    post = Post.find(params[:id])
+    if post.user_id != current_user.id
+      redirect_to root_path, alert: "投稿したアカウント以外では編集はできません"
+    end
   end
 
 end
