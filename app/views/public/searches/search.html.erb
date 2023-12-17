@@ -7,16 +7,21 @@
   <div class="row">
     <div class="col-md-3" style="min-height:100vh" >
       <%= render 'public/posts/form', post: @post %>
+      <div class="search mt-3 ml-2">
+        <h4>検索</h4>
+          <%= render 'public/searches/form' %>
+      </div>
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <div class="row">
+      <div class="col-md-12">
         <% if @model == 'user' %>
-          <h3>"<%= @key_word %>" のユーザー検索結果</h3>
+          <h3>"<%= @keyword %>" のユーザー検索結果</h3>
           <%= render 'user_index', users: @records %>
 
         <% elsif @model == 'post' %>
-          <h3>"<%= @key_word %>" の投稿検索結果</h3>
+          <% temp_post = Post.new(category: @category) %>
+          <h3>"<%= @keyword %><%= ' / ' + temp_post.category_i18n unless @category.blank? %>" の投稿検索結果</h3>
           <%= render 'public/posts/index', posts: @records %>
         <% end %>
       </div>
