@@ -1,4 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
+@import 'simple_calendar';
 
 // 全体用
 * {
@@ -48,8 +49,10 @@ footer{
   transition: 0.2s;   /* transitionでアニメーションを作成 */
   z-index: 2;   /* マスクより上に重なるようにする */
   width: 90%;   /* showビューの幅に合わせて設定 */
+  height: 80%;
   background-color: #ffffff;
   border-radius: 8px;
+  overflow-y: scroll;
 }
 
 /* hiddenクラスで最初は表示されないようにする */
@@ -63,3 +66,11 @@ footer{
   visibility: hidden;
   transform: translate(0, 0) scale(0.8);   /* 大きさ0.8倍から等倍にモーダルが拡大される */
 }
+
+// 画像サイズ
+.show-image-size {
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+

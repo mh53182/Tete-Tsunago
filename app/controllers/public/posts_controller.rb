@@ -6,13 +6,13 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     # 有効かつ公開ユーザーの投稿の取得
     base_query = Post.from_active_users.from_public_users
-    
+
     # 取得したクエリにログイン中ユーザーの投稿を追加
     if current_user
       user_posts = Post.where(user: current_user)
       base_query = base_query.or(user_posts)
     end
-    
+
     # 上記クエリにカテゴリ絞り込みがある場合は実施し、新着順に表示
     @posts = base_query.by_category(params[:category]).order(created_at: :desc)
   end
@@ -67,7 +67,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :child_id, :body, :category, :post_image)
+    params.require(:post).permit(:user_id, :child_id, :body, :category, :post_image, :start_time)
   end
 
   # URL指定による他人の投稿編集制限

@@ -63,4 +63,4 @@ gem 'enum_help'
 
 gem 'jquery-rails'
 
-# gem 'rails-i18n'
+gem 'simple_calendar'
