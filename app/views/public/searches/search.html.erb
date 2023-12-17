@@ -1,7 +1,12 @@
+<!--ユーザー検索時はサイドバーにユーザー、メインにそのひとたちの投稿-->
+<!--キーワード検索時は一覧用サイドバー、メインにキーワードの投稿-->
+<!--できるかな-->
+
+
 <div class="container-fluid mt-3">
   <div class="row">
     <div class="col-md-3" style="min-height:100vh" >
-      <%= render 'layouts/form', post: @post %>
+      <%= render 'public/posts/form', post: @post %>
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -12,7 +17,7 @@
 
         <% elsif @model == 'post' %>
           <h3>"<%= @key_word %>" の投稿検索結果</h3>
-          <%= render 'layouts/post_index', posts: @records %>
+          <%= render 'public/posts/index', posts: @records %>
         <% end %>
       </div>
     </div>
