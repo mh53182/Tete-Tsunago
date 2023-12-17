@@ -1,11 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-11 mx-auto py-2">
+    <div class="col-md-11 mx-auto py-3">
       <div class="row">
-        <div class="col-6">
-          <%= image_tag post.get_post_image, size: '400x400' %>
+        <div class="col-md-5">
+          <%= image_tag post.get_post_image, class: "show-image-size" %>
+          <!--size: '500x500' -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="row">
             <div class="col-md-8">
               <%= link_to user_path(user) do %>
@@ -14,11 +15,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
               <%= post.body %>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-3">
             <div class="col-md-3">
               <%= post.created_at.strftime('%Y/%m/%d') %>
             </div>
@@ -26,16 +27,18 @@
               <p>カテゴリ：<%= post.category_i18n %></p>
             </div>
             <div class="col-md-3">
-              <p>お子様：<%= post.child.nickname %></p>
+              <% if post.child.present? %>
+                <p>お子様：<%= post.child.nickname %></p>
+              <% end %>
             </div>
             <div class="col-md-3">
               <p>いいね：</p>
-              <span id="favorite_buttons_<%= post.id %>">
+              <p id="favorite_buttons_<%= post.id %>">
                 <%= render "public/favorites/favorite", post: @post %>
-              </span>
+              </p>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-3">
             <div class="col-md-11">
               <p>コメント:</p>
               <div id="post-comments">
