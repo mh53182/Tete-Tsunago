@@ -1,11 +1,5 @@
 ja:
   activerecord:
-    models:
-      user: "ユーザー"
-      child: "お子様"
-      post: "投稿"
-      comment: "コメント"
-      favorite: "いいね"
     attributes:
       user:
         name: "ユーザー名"
@@ -20,19 +14,24 @@ ja:
         category: "カテゴリ"
       comment:
         body: "コメント文"
-  enums:
-    post:
-      category:
-        everyday: "日常"
-        success: "できた"
-        graduation: "卒業"
-  activerecord:
+    models:
+      user: "ユーザー"
+      child: "お子様"
+      post: "投稿"
+      comment: "コメント"
+      favorite: "いいね"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  enums:
+    post:
+      category:
+        everyday: "日常"
+        success: "できた"
+        graduation: "卒業"
   date:
     abbr_day_names:
     - 日
@@ -43,7 +42,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -69,7 +68,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
