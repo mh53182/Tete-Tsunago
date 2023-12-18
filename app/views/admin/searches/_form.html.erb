@@ -1,5 +1,16 @@
-<%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-  <%= f.text_field :key_word %>
-  <%= f.select :model, options_for_select({"ユーザー" => "user", "コメント" => "comment"}) %>
-  <%= f.submit "検索" %>
+<%#= form_with url: admin_search_path, method: :get, local: true do |f| %>
+  <%#= f.text_field :key_word %>
+  <%#= f.select :model, options_for_select({"ユーザー" => "user", "コメント" => "comment"}) %>
+  <%#= f.submit "検索" %>
+<%# end %>
+
+
+<%= form_with url: admin_search_path, method: :get, local: true do |form| %>
+  <%= form.label :model, '検索対象:' %>
+  <%= form.select :model, options_for_select({'ユーザー': 'user', '投稿': 'post', 'コメント': 'comment'}, selected: params[:model]) %>
+
+  <%= form.label :keyword, 'キーワード:' %>
+  <%= form.text_field :keyword, value: params[:keyword] %>
+
+  <%= form.submit '検索' %>
 <% end %>

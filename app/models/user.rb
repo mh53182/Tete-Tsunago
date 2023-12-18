@@ -65,8 +65,8 @@ class User < ApplicationRecord
     user.id != current_user.id
   end
 
-  def self.search_for(key_word)
-    User.where('name LIKE ?', '%' + key_word + '%')
+  def self.search_for(keyword)
+    is_public.is_active.where("name LIKE ?", "%" + keyword + "%")
   end
 
 end

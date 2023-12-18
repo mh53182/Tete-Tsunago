@@ -10,20 +10,22 @@
 
 body {
   font-family: 'Zen Maru Gothic', sans-serif;
-  background-color: #ffeecc;
-  color: #291b25;
+  background-color: #E0FFF0;
+  color: #4A4A4A;
   min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
   position: relative;/* ←相対位置 */
   padding-bottom: 60px; /* ←フッターの高さを指定 */
+}
+
+ul {
+  list-style: none;
 }
 
 footer{
   width: 100%;
   position: absolute;/* ←絶対位置 */
   bottom: 0;
-
-  /* 以下 背景色やテキストカラーなどはお好みで指定してください */
-  background: #ffce6d;
+  background: #008080;
   text-align: center;
 }
 

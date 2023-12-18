@@ -28,8 +28,18 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def self.search_for(key_word)
-    Post.where('body LIKE ?', '%' + key_word + '%')
+  def self.search_for(keyword, category = nil)
+    query = from_public_users.from_active_users
+    query = query.where("body LIKE ?", "%" + keyword + "%") if keyword.present?
+    query = query.by_category(category) if category.present?
+    query
   end
+
+  # def self.search_for(keyword, category = nil)
+  #   query = all
+  #   query = where("body LIKE ?", "%" + keyword + "%")if keyword.present?
+  #   query = query.by_category(category) if category.present?
+  #   query
+  # end
 
 end

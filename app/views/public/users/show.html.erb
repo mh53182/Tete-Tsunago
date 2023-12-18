@@ -1,50 +1,75 @@
 <div class="container-fluid mt-3">
   <div class="row">
+    <!--サイドバー-->
     <div class="col-md-3" style="min-height:100vh" >
-      <%= render 'layouts/form', post: @post %>
+      <%= render 'public/posts/form', post: @post %>
+
+      <% if current_user == @user %>
+        <%= link_to "いいねした投稿一覧", favorites_user_path(@user), class: "btn btn-info btn-block" %>
+        <%= link_to "フォローしているユーザー", followings_relationship_path(@user), class: "btn btn-info btn-block" %>
+        <div class="calendar mt-2">
+          <%= month_calendar events: @posts do |date, posts| %>
+            <%= date.day %>
+            <% posts.each do |post| %>
+              <%= link_to "●", post_path(post) %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
+    <!--メイン-->
     <div class="col-md-8 offset-md-1">
-      <div class="row">
-        <div class="col-md-6">
-          <%= image_tag @user.get_profile_image %><!--サイズ指定-->
-          <%= @user.name %>
-          <%= @user.introduction %>
-          <%= link_to "いいねした投稿一覧", favorites_user_path(@user) %>
-          <%= link_to "フォローしているユーザー", followings_relationship_path(@user) %>
-          <div class="row">
-            <% if current_user != @user %>
-              <% if current_user.following?(@user) %>
-                <%= link_to "フォローを外す", relationship_path(@user), method: :delete, class: "btn btn-info" %>
+      <div class="col-md-12">
+        <h3><%= @user.name %>さんのページ</h3>
+        <div class="row mt-4">
+          <div class="col-md-2">
+            <div class="row justify-content-center">
+              <%= image_tag @user.get_profile_image, :size =>'70x70' %>
+            </div>
+            <div class="row mt-2">
+              <% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= link_to "フォローを外す", relationship_path(@user), method: :delete, class: "btn btn-info" %>
+                <% else %>
+                  <%= link_to "フォローする", relationship_path(@user), method: :post, class: "btn btn-success" %>
+                <% end %>
               <% else %>
-                <%= link_to "フォローする", relationship_path(@user), method: :post, class: "btn btn-success" %>
-              <% end %>
-            <% else %>
-              <% unless @user.guest_user? %>
-                <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-                  <i class="fas fa-user-cog"></i>
+                <% unless @user.guest_user? %>
+                  <%= link_to "ユーザー編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
                 <% end %>
               <% end %>
+            </div>
+          </div>
+          <div class="col-md-6 ml-3">
+            <h5>自己紹介：</h5>
+            <p><%= @user.introduction %></p>
+          </div>
+          <div class="col-md-3 ml-2">
+            <h5>お子様:</h5>
+            <% if @user.children.any? %>
+              <ul>
+                <% @user.children.each do |child| %>
+                  <li>・<%= link_to child.nickname, child_posts_path(child) %>
+                    <% if current_user == @user %>
+                      <%= link_to "編集", edit_child_path(child) %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>登録されていません</p>
+            <% end %>
+            <% if current_user == @user %>
+              <%= link_to "お子様新規登録", new_child_path, class: "btn btn-info btn-block" %>
             <% end %>
           </div>
         </div>
-        <div class="col-md-6">
-          <h2>こどもたち:</h2>
-          <% if @user.children.any? %>
-            <ul>
-              <% @user.children.each do |child| %>
-                <li><%= child.nickname %></li>
-                <%= link_to "編集", edit_child_path(child) %>
-              <% end %>
-            </ul>
-          <% else %>
-            <p>登録されていません</p>
-          <% end %>
-          <%= link_to "新規登録", new_child_path %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= render 'public/posts/index', posts: @posts %>
+          </div>
         </div>
-      </div>
-      <div class="col-md-12">
-        <%= render 'layouts/post_index', posts: @posts %>
       </div>
     </div>
   </div>

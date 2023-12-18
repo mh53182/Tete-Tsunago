@@ -41,7 +41,9 @@
           <%= image_tag post.get_post_image %>
           <%= post.body %>
           <%= post.category_i18n %>
-          <%= post.child.nickname %>
+          <% if post.child.present? %>
+            お子様：<%= post.child.nickname %>
+          <% end %>
         </div>
       <% end %>
     </div>
