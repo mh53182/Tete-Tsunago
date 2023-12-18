@@ -16,9 +16,9 @@ class Public::SearchesController < ApplicationController
     end
 
     if @model == "user"
-      @records = User.search_for(@keyword)
+      @records = User.search_for(@keyword).order(created_at: :desc)
     else
-      @records = Post.search_for(@keyword, @category)
+      @records = Post.search_for(@keyword, @category).order(created_at: :desc)
     end
     @post = Post.new
   end

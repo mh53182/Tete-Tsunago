@@ -44,10 +44,12 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :children, only: [:new, :create, :edit, :update]
-    
+    resources :children, only: [:new, :create, :edit, :update] do
+      resources :posts,  only: :index, controller: 'children/posts'
+    end
+
     get 'search' => 'searches#search'
-    
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

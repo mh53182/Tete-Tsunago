@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def edit
@@ -27,7 +27,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
+    @favorite_posts = Post.where(id: favorites).order(created_at: :desc)
     @post = Post.new
   end
 

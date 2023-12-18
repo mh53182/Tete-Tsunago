@@ -1,0 +1,2 @@
+module Children::PostsHelper
+end
