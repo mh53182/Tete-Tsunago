@@ -1,0 +1,50 @@
+<div class="row row-cols-md-2">
+  <% @posts.each do |post| %>
+    <div class="col-md-6 px-1">
+      <div class="card mt-3" style="max-width: 500px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <%= link_to admin_post_path(post.id), remote: true do %>
+              <%= image_tag post.get_post_image, class: "img-fluid rounded-start" %>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to admin_user_path(post.user) do%>
+                  <%= image_tag post.user.get_profile_image, size:'40x40' %>
+                  <%= post.user.name %>
+                <% end %>
+              </h5>
+              <p class="card-text"><%= post.body %></p>
+              <p class="card-text">
+                <small class="text-body-secondary">
+                  <table class="table table-borderless px-1">
+                    <tr>
+                      <td>カテゴリ：<%= post.category_i18n %></td>
+                      <td>
+                        <% if post.child.present? %>
+                          お子様：<%= post.child.nickname %>
+                        <% end %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>いいね（<%= post.favorites.count %>）</td>
+                      <td>コメント（<%= post.comments.count %>）</td>
+                    </tr>
+                    <tr>
+                      <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                      <td>
+                        <%= link_to "削除", post_path(post.id), method: :delete, 'data-confirm' => "本当に削除しますか？" %>
+                      </td>
+                    </tr>
+                  </table>
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
