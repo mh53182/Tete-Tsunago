@@ -35,11 +35,14 @@ class User < ApplicationRecord
   end
   # フォロー/フォロワー機能　ここまで
 
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :name,         length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
 
   # 公開アカウントの取得
   scope :is_public, -> { where(is_public: true) }
+
+  # 有効アカウントの取得
+  scope :is_active, -> { where(is_active: true) }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_profile_image.png'
@@ -62,8 +65,8 @@ class User < ApplicationRecord
     user.id != current_user.id
   end
 
-  def self.search_for(key_word)
-    User.where('name LIKE ?', '%' + key_word + '%')
+  def self.search_for(keyword)
+    is_public.is_active.where("name LIKE ?", "%" + keyword + "%")
   end
 
 end

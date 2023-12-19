@@ -1,4 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
+@import 'simple_calendar';
 
 // 全体用
 * {
@@ -9,8 +10,69 @@
 
 body {
   font-family: 'Zen Maru Gothic', sans-serif;
-  background-color: #ffeecc;
-  color: #291b25;
+  background-color: #E0FFF0;
+  color: #4A4A4A;
+  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;/* ←相対位置 */
+  padding-bottom: 60px; /* ←フッターの高さを指定 */
 }
 
-// 
+ul {
+  list-style: none;
+}
+
+footer{
+  width: 100%;
+  position: absolute;/* ←絶対位置 */
+  bottom: 0;
+  background: #008080;
+  text-align: center;
+}
+
+// モーダルウィンドウ
+#mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#modal {
+  position: fixed;   /* スクロールで移動しないようmodalの位置を固定します */
+  top: 10vh;
+  /* 以下3行：モーダルを左右中央揃えにする方法 */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translate(0, 0) scale(1);
+  transition: 0.2s;   /* transitionでアニメーションを作成 */
+  z-index: 2;   /* マスクより上に重なるようにする */
+  width: 90%;   /* showビューの幅に合わせて設定 */
+  height: 80%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+/* hiddenクラスで最初は表示されないようにする */
+#mask.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#modal.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0) scale(0.8);   /* 大きさ0.8倍から等倍にモーダルが拡大される */
+}
+
+// 画像サイズ
+.show-image-size {
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+

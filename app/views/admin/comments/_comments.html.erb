@@ -1,0 +1,16 @@
+<% post.comments.each do |comment| %>
+  <tr>
+    <td>
+      <%= link_to (comment.user) do %>
+        <%= image_tag comment.user.get_profile_image, size:"50x50" %><br>
+        <%= comment.user.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= comment.body %>
+    </td>
+    <td>
+      <%= link_to "削除", destroy_modal_admin_comment_path(comment.id), method: :delete, class: "btn btn-danger", remote: true, 'data-confirm' => "本当に削除しますか？" %>
+    </td>
+  </tr>
+<% end %>

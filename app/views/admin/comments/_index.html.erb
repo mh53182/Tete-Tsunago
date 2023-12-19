@@ -1,13 +1,16 @@
-<% comments.each do |comment| %>
+<!--モーダルウィンドウ用-->
+<div id="mask" class="hidden"></div>
+<div id="modal" class="hidden"></div>
 
-  <table>
-    <tr>
-      <th>コメント</th>
-      <th>ユーザー</th>
-      <th>コメント元の投稿</th>
-      <th></th>
-      <th></th>
-    </tr>
+<table>
+  <tr>
+    <th>コメント</th>
+    <th>ユーザー</th>
+    <th>コメント元の投稿</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% comments.each do |comment| %>
     <tr>
       <td>
         <%= comment.body %>
@@ -18,8 +21,8 @@
         <% end %>
         </td>
       <td><%= comment.post.body %></td>
-      <td><%= link_to "投稿を確認する", admin_comment_path(comment) %></td>
-      <td><%= link_to "コメントを削除", admin_comment_path(comment), method: :delete, 'data-confirm' => "本当に削除しますか？" %></td>
+      <td><%= link_to "投稿を確認する", admin_post_path(comment.post), remote: true %></td>
+      <td><%= link_to "コメントを削除", destroy_index_admin_comment_path(comment), method: :delete, 'data-confirm' => "本当に削除しますか？" %></td>
     </tr>
-  </table>
-<% end %>
+   <% end %>
+</table>

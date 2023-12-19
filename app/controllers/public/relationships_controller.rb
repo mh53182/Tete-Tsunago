@@ -14,8 +14,12 @@ class Public::RelationshipsController < ApplicationController
   end
   
   def followings
-    user = User.find(params[:id])
-    @users = user.followings
+    @user = User.find(params[:id])
+    @users = @user.followings.includes(:posts)
+
+    # 各ユーザーの投稿を集め、作成日時で降順に並び替える
+    @posts = @users.map(&:posts).flatten.sort_by { |post| -post.created_at.to_i }
+    @post = Post.new
   end
 
   def followers

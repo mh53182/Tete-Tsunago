@@ -20,7 +20,13 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'homes#top'
     resources :users,    only:[:index, :show, :edit, :update]
-    resources :comments, only:[:index, :show, :destroy]
+    resources :posts,    only:[:index, :show, :destroy]
+    resources :comments, only:[:index, :show] do
+      member do
+        delete 'destroy_index' => 'comments#destroy_index'
+        delete 'destroy_modal' => 'comments#destroy_modal'
+      end
+    end
     get 'search' => 'searches#search'
   end
 
@@ -30,7 +36,11 @@ Rails.application.routes.draw do
         get   'favorites' => 'users#favorites'
         get   'confirm'   => 'users#confirm'
         patch 'withdraw'  => 'users#withdraw'
-        resource :relationship, only: [:create, :destroy]
+        resource :relationship, only: [:create, :destroy] do
+          member do
+            get :followings, :followers
+          end
+        end
       end
     end
 
@@ -39,10 +49,12 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :children, only: [:new, :create, :edit, :update]
-    
+    resources :children, only: [:new, :create, :edit, :update] do
+      resources :posts,  only: :index, controller: 'children/posts'
+    end
+
     get 'search' => 'searches#search'
-    
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

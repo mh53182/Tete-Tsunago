@@ -5,8 +5,8 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true
 
-  def self.search_for(key_word)
-    Comment.where('body LIKE ?', '%' + key_word + '%')
+  def self.search_for(keyword)
+    Comment.where('body LIKE ?', '%' + keyword + '%')
   end
 
 end

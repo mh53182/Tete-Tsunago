@@ -23,7 +23,9 @@
               <p>カテゴリ：<%= @post.category_i18n %></p>
             </div>
             <div class="col-md-4">
-              <p>お子様：<%= @post.child.nickname %></p>
+              <% if @post.child.present? %>
+                <p>お子様：<%= @post.child.nickname %></p>
+              <% end %>
             </div>
             <div class="col-md-4">
               <p>いいね：</p>
