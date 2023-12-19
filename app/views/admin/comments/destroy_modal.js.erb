@@ -1,0 +1,2 @@
+$('#post-comments').html("<%= j(render 'admin/comments/comments', post: @post) %>");
+$('#comment_count').html("<%= @post.comments.count %>");

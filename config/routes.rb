@@ -21,7 +21,12 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :users,    only:[:index, :show, :edit, :update]
     resources :posts,    only:[:index, :show, :destroy]
-    resources :comments, only:[:index, :show, :destroy]
+    resources :comments, only:[:index, :show] do
+      member do
+        delete 'destroy_index' => 'comments#destroy_index'
+        delete 'destroy_modal' => 'comments#destroy_modal'
+      end
+    end
     get 'search' => 'searches#search'
   end
 
