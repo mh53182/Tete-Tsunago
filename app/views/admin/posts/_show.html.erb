@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-11 mx-auto py-3">
+      <div class="row">
+        <div class="col-md-5">
+          <%= image_tag post.get_post_image, class: "show-image-size" %>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-8">
+              <%= link_to admin_user_path(user) do %>
+                <%= image_tag user.get_profile_image %><%= user.name %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mt-3">
+              <%= post.body %>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <%= post.created_at.strftime('%Y/%m/%d') %>
+            </div>
+            <div class="col-md-3">
+              <p>カテゴリ：<%= post.category_i18n %></p>
+            </div>
+            <div class="col-md-3">
+              <% if post.child.present? %>
+                <p>お子様：<%= post.child.nickname %></p>
+              <% end %>
+            </div>
+            <div class="col-md-3">
+              <p>いいね：<%= post.favorites.count %>
+              </p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-11">
+              <p>コメント:</p>
+              <div id="post-comments">
+                <%= render "admin/comments/comments", post: @post %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

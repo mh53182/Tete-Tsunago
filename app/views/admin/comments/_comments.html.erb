@@ -9,10 +9,8 @@
     <td>
       <%= comment.body %>
     </td>
-    <% if comment.user == current_user %>
-      <td>
-        <%= link_to "削除", post_comment_path(post.id, comment.id), method: :delete, class: "btn btn-danger", remote: true, 'data-confirm' => "本当に削除しますか？" %>
-      </td>
-    <% end %>
+    <td>
+      <%= link_to "削除", destroy_modal_admin_comment_path(comment.id), method: :delete, class: "btn btn-danger", remote: true, 'data-confirm' => "本当に削除しますか？" %>
+    </td>
   </tr>
 <% end %>
