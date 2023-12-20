@@ -14,20 +14,38 @@ body {
   color: #4A4A4A;
   min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
   position: relative;/* ←相対位置 */
-  padding-bottom: 60px; /* ←フッターの高さを指定 */
+  padding-bottom: 50px; /* ←フッターの高さを指定 */
 }
 
 ul {
   list-style: none;
 }
 
-footer{
+header {
+  height: 80px;
+  width: 100%;
+}
+
+footer {
+  height: 50px;
   width: 100%;
   position: absolute;/* ←絶対位置 */
   bottom: 0;
   background: #008080;
   text-align: center;
 }
+
+.main-visual {
+  background-image: url('../images/top.jpg');
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 130px);
+}
+
+.field_with_errors {
+  display: contents;
+}
+
 
 // モーダルウィンドウ
 #mask {
