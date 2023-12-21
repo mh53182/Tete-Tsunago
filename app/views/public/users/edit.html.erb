@@ -1,6 +1,6 @@
 <div class="container-fluid mt-3">
   <div class="row">
-    
+
     <% if @user.profile_image.attached? %>
       <div class="col-md-3">
         <p>登録されている画像：</p>
@@ -9,33 +9,33 @@
     <% else %>
       <div class="col-md-3"></div>
     <% end %>
-    
+
     <div class="col-md-6 mx-auto d-flex align-items-center flex-column">
       <h4>ユーザー情報編集</h4>
       <div class="form mt-3">
         <%= form_with model: @user, local:true do |f| %>
-          <%= render 'layouts/errors', obj: f.object %>
-          
+          <%= render "layouts/errors", obj: f.object %>
+
           <div class="form-group">
             <%= f.label :image, "プロフィール画像（変更する場合は選択してください）" %>
             <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
           </div>
-          
+
           <div class="form-group">
             <%= f.label :name, "名前" %>
             <%= f.text_field :name, class: "form-control name" %>
           </div>
-          
+
           <div class="form-group">
             <%= f.label :introduction, "自己紹介（200文字以内）" %>
             <%= f.text_area :introduction, placeholder: "ここに自己紹介を入力できます", rows: 3, class: "form-control introduction" %>
           </div>
-          
+
           <div class="form-group">
             <%= f.label :email, "メールアドレス" %>
             <%= f.text_field :email, placeholder: "メールアドレスを入力してください", class: "form-control email" %>
           </div>
-          
+
           <div class="checkbox">
             <p>公開ステータス</p>
             <%= f.radio_button :is_public, true %>
@@ -43,13 +43,15 @@
 
             <%= f.radio_button :is_public, false %>
             <%= f.label :is_public_false, "非公開" %><br>
-            <p class="info">（非公開を選択すると、ユーザー情報や投稿は他のユーザーから確認できなくなります）</p>
+            <p class="info">
+              （非公開を選択すると、ユーザー情報や投稿は他のユーザーから確認できなくなります。
+            </p>
           </div>
 
           <div class="form-group text-center">
             <%= f.submit "保存", class: "btn btn-info" %>
           </div>
-          
+
         <% end %>
       </div>
       <%= link_to "退会する", confirm_user_path(@user), class: "btn btn-outline-danger mt-4" %>

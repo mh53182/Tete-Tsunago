@@ -36,7 +36,7 @@
                 <% end %>
               <% else %>
                 <% unless @user.guest_user? %>
-                  <%= link_to "ユーザー編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
+                  <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
                 <% end %>
               <% end %>
             </div>
@@ -50,7 +50,8 @@
             <% if @user.children.any? %>
               <ul>
                 <% @user.children.each do |child| %>
-                  <li>・<%= link_to child.nickname, child_posts_path(child) %>
+                  <li>
+                    ・<%= link_to child.nickname, child_posts_path(child) %>
                     <% if current_user == @user %>
                       <%= link_to "編集", edit_child_path(child) %>
                     <% end %>

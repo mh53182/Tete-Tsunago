@@ -12,6 +12,9 @@
                 <%= image_tag user.get_profile_image %><%= user.name %>
               <% end %>
             </div>
+            <div class="col-md-3">
+              <%= link_to "投稿を削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-12 mt-3">
@@ -31,7 +34,8 @@
               <% end %>
             </div>
             <div class="col-md-3">
-              <p>いいね：<%= post.favorites.count %>
+              <p>
+                いいね（<%= post.favorites.count %>）
               </p>
             </div>
           </div>

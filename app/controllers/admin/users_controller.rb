@@ -6,7 +6,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
     @comments = @user.comments
   end
 
@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notece] = "ユーザー情報の更新が完了しました"
+      flash[:notice] = "ユーザー情報の更新が完了しました"
       redirect_to admin_user_path(@user)
     else
       flash.now[:alert] = "入力内容に不備があります"
