@@ -1,47 +1,51 @@
 <div class="container-fluid mt-3">
-  <div class="row row-cols-md-2">
-    <div class="col-md-6 px-5 mx-auto">
+  <div class="row justify-content-center">
+    <div class="col-md-8 px-5">
       <h2>てて つなご　管理メニュー ： ユーザー一覧</h2>
-
+    </div>
+    
+    <div class="row row-cols-md-2 justify-content-center">
       <% @users.each do |user| %>
-        <div class="card mt-3 shadow" style="max-width: 500px;">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-2">
-                <%= image_tag user.get_profile_image, size: "60x60" %>
-              </div>
-              <div class="col-md-9 offset-1">
-                <div class="card-title ">
-                  <%= user.name %>
+        <div class="col-md-6 px-1">
+          <div class="card my-3 shadow" style="max-width: 500px;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <%= image_tag user.get_profile_image, size: "60x60" %>
                 </div>
-                <div class="card-text">
-                  <%= user.introduction %>
-                  <table class="table table-borderless p-1">
-                    <tr>
-                      <td>会員ステータス</td>
-                      <td>
-                        <% if user.is_active == true %>
-                          <span class="text-success">有効</span>
-                        <% else %>
-                          <span class="text-danger">退会</span>
-                        <% end %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>公開ステータス</td>
-                      <td>
-                        <% if user.is_public == true %>
-                          <span class="text-success">公開</span>
-                        <% else %>
-                          <span class="text-danger">非公開</span>
-                        <% end %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><%= link_to "詳細を見る", admin_user_path(user), class: "btn btn-info btn-sm" %></td>
-                      <td><%= link_to "編集する", edit_admin_user_path(user), class: "btn btn-info btn-sm" %></td>
-                    </tr>
-                  </table>
+                <div class="col-md-9 offset-1">
+                  <div class="card-title ">
+                    <%= user.name %>
+                  </div>
+                  <div class="card-text">
+                    <%= user.introduction %>
+                    <table class="table table-borderless p-1">
+                      <tr>
+                        <td>会員ステータス</td>
+                        <td>
+                          <% if user.is_active == true %>
+                            <span class="text-success">有効</span>
+                          <% else %>
+                            <span class="text-danger">退会</span>
+                          <% end %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>公開ステータス</td>
+                        <td>
+                          <% if user.is_public == true %>
+                            <span class="text-success">公開</span>
+                          <% else %>
+                            <span class="text-danger">非公開</span>
+                          <% end %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><%= link_to "詳細を見る", admin_user_path(user), class: "btn btn-info btn-sm" %></td>
+                        <td><%= link_to "編集する", edit_admin_user_path(user), class: "btn btn-info btn-sm" %></td>
+                      </tr>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

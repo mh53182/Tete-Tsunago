@@ -1,14 +1,15 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<div class="container-fluid mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8 px-5 mb-5">
       <h2>てて つなご　管理メニュー</h2>
+    </div>
+  </div>
 
-      <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-primary" %>
-
-      <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-primary" %>
-
-      <%= link_to "コメント一覧", admin_comments_path, class: "btn btn-primary" %>
-
+  <div class="row justify-content-center">
+    <div class="col-6 btn-wrap">
+      <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-info btn-lg btn-block" %>
+      <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-info btn-lg btn-block" %>
+      <%= link_to "コメント一覧", admin_comments_path, class: "btn btn-info btn-lg btn-block" %>
     </div>
   </div>
 </div>

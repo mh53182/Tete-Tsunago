@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
 
   def index
-    @comments = Comment.includes(:post).all
+    @comments = Comment.includes(:post).all.order(created_at: :desc)
   end
 
   def show
@@ -11,18 +11,24 @@ class Admin::CommentsController < ApplicationController
     @comments = @post.comments
   end
 
+  # 投稿詳細モーダルからの削除用アクション
   def destroy_modal
-    @comment = Comment.find(params[:id])
+    destroy_comment
     @post = @comment.post
-    @comment.destroy
-    flash[:notice] = "コメントを削除しました"
   end
-  
+
+  # コメント一覧からの削除用
   def destroy_index
+    destroy_comment
+    redirect_to admin_comments_path
+  end
+
+  private
+
+  def destroy_comment
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] = "コメントを削除しました"
-    redirect_to admin_comments_path
   end
 
 end
