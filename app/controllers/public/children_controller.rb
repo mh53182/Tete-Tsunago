@@ -1,6 +1,6 @@
 class Public::ChildrenController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @child = Child.new
   end
@@ -27,13 +27,13 @@ class Public::ChildrenController < ApplicationController
       flash[:notece] = "お子様情報が更新されました"
       redirect_to user_path(current_user)
     else
-      flash[:now] = "お子様情報が更新できませんでした"
+      flash.now[:alert] = "お子様情報が更新できませんでした"
       render :edit
     end
   end
-  
+
   private
-  
+
   def child_params
     params.require(:child).permit(:nickname, :birthday)
   end

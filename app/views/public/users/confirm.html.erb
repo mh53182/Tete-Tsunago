@@ -1,18 +1,21 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6 mt-5 text-center">
-      <p><b>本当に退会しますか？</b><br><br>
-        ～～～～<br>
-        ～～～～～～～～<br>
-        退会する場合は、「退会する」をクリックしてください。
-      </p>
-      <div class="mt-3">
-        <span><%= link_to "退会しない", user_path(@user), class: "btn btn-primary mr-2" %></span>
-        <span><%= link_to "退会する", withdraw_user_path(@user), method: :patch, class: "btn btn-danger ml-2" %></span>
+    <div class="col-md-8 mx-auto">
+      <div class="text-center my-5 py-3">
+        <h3 class="my-5">本当に退会しますか？</h3>
+        <p>
+          退会すると、これまでの投稿も閲覧できなくなります。<br>
+          投稿を残して他のユーザーからの閲覧を制限するには<br>
+          非公開機能をご利用ください。<br>
+          <br>
+          退会後、現在登録されているメールアドレスでの再登録はできません。<br>
+          退会する場合は、「退会する」をクリックしてください。
+        </p>
+        <div class="my-5">
+          <span><%= link_to "マイページに戻る", user_path(@user), class: "btn btn-primary mr-2" %></span>
+          <span><%= link_to "退会する", withdraw_user_path(@user), method: :patch, class: "btn btn-danger ml-2" %></span>
+        </div>
       </div>
     </div>
-    <div class="col-3"></div>
   </div>
 </div>
-

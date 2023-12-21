@@ -49,11 +49,14 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    resources :children, only: [:new, :create, :edit, :update] do
-      resources :posts,  only: :index, controller: 'children/posts'
+    resources   :children, only: [:new, :create, :edit, :update] do
+      resources :posts,    only: :index, controller: 'children/posts'
     end
 
     get 'search' => 'searches#search'
+    
+    # お子様情報新規い登録失敗後の画面でのリロード対策
+    get 'children' => redirect('children/new')
 
   end
 

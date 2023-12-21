@@ -17,6 +17,7 @@ body {
   padding-bottom: 50px; /* ←フッターの高さを指定 */
 }
 
+// バリデーションエラー時のリスト表示"・"が要素からはみ出るため消去
 ul {
   list-style: none;
 }
@@ -29,10 +30,27 @@ header {
 footer {
   height: 50px;
   width: 100%;
-  position: absolute;/* ←絶対位置 */
+  position: absolute;
   bottom: 0;
   background: #008080;
   text-align: center;
+}
+
+// フラッシュメッセージ
+.flash-message {
+  border-radius: 5px;
+  padding: 10px 24px;
+  margin: 5px 0px;
+}
+ 
+.flash-message.notice {
+  background-color: #bcdfff;
+  color: #0067C0;
+}
+ 
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
 }
 
 .main-visual {
@@ -46,6 +64,10 @@ footer {
   display: contents;
 }
 
+// 入力フォーム用説明文
+.info {
+   font-size: 12px;
+}
 
 // モーダルウィンドウ
 #mask {

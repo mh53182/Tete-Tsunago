@@ -36,10 +36,10 @@ class Public::SessionsController < Devise::SessionsController
   # 退会済アカウントのログイン不可処理
   def user_state
     user = User.find_by(email: params[:user][:email])
-    return redirect_to new_user_session_path, notice: "ユーザーが存在しません。正しいメールアドレスを入力してください。" if user.nil?
+    return redirect_to new_user_session_path, alert: "ユーザーが存在しません。正しいメールアドレスを入力してください。" if user.nil?
     return unless user.valid_password?(params[:user][:password])
     return if user.is_active
-    flash[:error] = "すでに退会されたアカウントです。別のメールアドレスをお使いください。"
+    flash[:alert] = "すでに退会されたアカウントです。別のメールアドレスをお使いください。"
     redirect_to new_user_session_path
   end
 

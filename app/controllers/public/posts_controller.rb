@@ -32,14 +32,14 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notece] = "投稿しました"
+      flash[:notice] = "投稿しました"
       redirect_to user_path(current_user)
     else
       flash.now[:alert] = "投稿内容に不備があります"
-      @posts = Post.all
-      render :index
-      # redirect_to request.referer
-      # 各ビュー完成後にrenderの分岐を記述する。flash.nowに変更する。
+      @user = current_user
+      @post = Post.new
+      @posts = @user.posts.order(created_at: :desc)
+      render template: "public/users/show"
     end
   end
 
