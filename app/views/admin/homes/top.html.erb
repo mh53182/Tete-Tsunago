@@ -1,15 +1,22 @@
 <div class="container-fluid mt-3">
   <div class="row justify-content-center">
-    <div class="col-md-8 px-5 mb-5">
+    <div class="col-md-8 px-5 my-5">
       <h2>てて つなご　管理メニュー</h2>
     </div>
   </div>
 
   <div class="row justify-content-center">
-    <div class="col-6 btn-wrap">
+    <div class="col-md-6 btn-wrap mb-5">
       <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-info btn-lg btn-block" %>
       <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-info btn-lg btn-block" %>
       <%= link_to "コメント一覧", admin_comments_path, class: "btn btn-info btn-lg btn-block" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-5">
+      <h5 class="mb-3">ユーザー名・投稿本文・コメント本文のキーワード検索ができます</h5>
+      <%= render "admin/searches/form" %>
     </div>
   </div>
 </div>

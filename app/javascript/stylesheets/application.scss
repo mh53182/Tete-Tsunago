@@ -53,6 +53,7 @@ footer {
   color: #930403;
 }
 
+// メインビジュアルを表示した際にヘッダー・フッターの隙間を無くす
 .main-visual {
   background-image: url('../images/top.jpg');
   background-size: cover;
@@ -62,6 +63,11 @@ footer {
 
 .field_with_errors {
   display: contents;
+}
+
+// 
+.single-card-last-row .col:last-child {
+  justify-content: flex-start;
 }
 
 // 入力フォーム用説明文

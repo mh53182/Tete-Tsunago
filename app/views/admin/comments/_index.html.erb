@@ -1,31 +1,37 @@
-<!--未使用のパーシャルか確認する-->
-
-
 <!--モーダルウィンドウ用-->
 <div id="mask" class="hidden"></div>
 <div id="modal" class="hidden"></div>
 
-<table>
-  <tr>
-    <th>コメント</th>
-    <th>ユーザー</th>
-    <th>コメント元の投稿</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% comments.each do |comment| %>
+<div class="row mt-3">
+  <table class="table table-striped">
     <tr>
-      <td>
-        <%= comment.body %>
-      </td>
-      <td>
-        <%= link_to admin_user_path(comment.user) do %>
-          <%= comment.user.name %>
-        <% end %>
-        </td>
-      <td><%= comment.post.body %></td>
-      <td><%= link_to "投稿を確認する", admin_post_path(comment.post), remote: true %></td>
-      <td><%= link_to "コメントを削除", destroy_index_admin_comment_path(comment), method: :delete, 'data-confirm' => "本当に削除しますか？" %></td>
+      <th>コメント文</th>
+      <th>コメントしたユーザー</th>
+      <th>コメント元の投稿</th>
+      <th></th>
+      <th></th>
     </tr>
-   <% end %>
-</table>
+    <% comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= comment.body.truncate(20) %>
+        </td>
+        <td>
+          <%= link_to admin_user_path(comment.user) do %>
+            <%= comment.user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= comment.post.body.truncate(20) %>
+        </td>
+        <td>
+          <%= link_to "投稿を確認する", admin_post_path(comment.post), remote: true, class: "btn btn-info btn-sm" %>
+        </td>
+        <td>
+        <%= link_to "コメントを削除", destroy_index_admin_comment_path(comment), method: :delete,
+                   "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+     <% end %>
+  </table>
+</div>

@@ -56,9 +56,7 @@
           </li>
         <% end %>
         </ul>
-        <% if admin_signed_in? %>
-          <%= render 'admin/searches/form' %>
-        <% else %>
+        <% if user_signed_in? %>
           <%= render 'public/searches/form' %>
         <% end %>
       </div>

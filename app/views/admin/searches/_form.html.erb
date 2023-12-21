@@ -6,11 +6,19 @@
 
 
 <%= form_with url: admin_search_path, method: :get, local: true do |form| %>
-  <%= form.label :model, '検索対象:' %>
-  <%= form.select :model, options_for_select({'ユーザー': 'user', '投稿': 'post', 'コメント': 'comment'}, selected: params[:model]) %>
 
-  <%= form.label :keyword, 'キーワード:' %>
-  <%= form.text_field :keyword, value: params[:keyword] %>
-
-  <%= form.submit '検索' %>
+  <div class="form-group">
+    <%= form.label :model, '検索対象:' %>
+    <%= form.select :model, options_for_select({'ユーザー': 'user', '投稿': 'post', 'コメント': 'comment'}, selected: params[:model]) %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :keyword, 'キーワード:' %>
+    <%= form.text_field :keyword, value: params[:keyword] %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.submit "検索", class: "btn btn-info ml-4" %>
+  </div>
+  
 <% end %>
