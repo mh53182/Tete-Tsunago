@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
     end
 
     # 上記クエリにカテゴリ絞り込みがある場合は実施し、新着順に表示
-    @posts = base_query.by_category(params[:category]).order(created_at: :desc)
+    @posts = base_query.by_category(params[:category]).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def show
@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
       flash.now[:alert] = "投稿内容に不備があります"
       @user = current_user
       @post = Post.new
-      @posts = @user.posts.order(created_at: :desc)
+      @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(4)
       render template: "public/users/show"
     end
   end

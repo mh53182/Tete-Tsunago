@@ -23,7 +23,7 @@
                              include_blank: "任意でタグ付けできます" %>
     </div>
     <div class="form-group">
-      <!--simple_calendar用の日付カラムstart_timeに今日の日付を保存する-->
+      <!--simple_calendar用の日付カラムstart_timeに投稿日時を保存する-->
       <%= f.hidden_field :start_time, value: Time.zone.now %>
       <%= f.submit "投稿する", class: "btn btn-success" %>
     </div>

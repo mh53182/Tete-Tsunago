@@ -18,7 +18,7 @@ class Public::RelationshipsController < ApplicationController
     @users = @user.followings.includes(:posts)
 
     # 各ユーザーの投稿を集め、作成日時で降順に並び替える
-    @posts = @users.map(&:posts).flatten.sort_by { |post| -post.created_at.to_i }
+    @posts = @users.map(&:posts).flatten.sort_by { |post| -post.created_at.to_i }.page(params[:page]).per(4)
     @post = Post.new
   end
 
