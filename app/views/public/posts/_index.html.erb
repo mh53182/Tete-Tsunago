@@ -16,7 +16,7 @@
             <div class="card-body">
               <h5 class="card-title">
                 <%= link_to user_path(post.user) do%>
-                  <%= image_tag post.user.get_profile_image, size:'40x40' %>
+                  <%= image_tag post.user.get_profile_image, size: "40x40", class: "rounded-circle"; %>
                   <%= post.user.name %>
                 <% end %>
               </h5>
@@ -36,7 +36,11 @@
                       <td id="favorite_buttons_<%= post.id %>">
                         <%= render "public/favorites/favorite", post: post %>
                       </td>
-                      <td>コメント（<%= post.comments.count %>）</td>
+                      <td>
+                        <p>
+                          コメント（<span id="comment_count"><%= post.comments.count %></span>）
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td><%= post.created_at.strftime('%Y/%m/%d') %></td>

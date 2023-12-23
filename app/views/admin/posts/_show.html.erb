@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-md-8">
               <%= link_to admin_user_path(user) do %>
-                <%= image_tag user.get_profile_image %><%= user.name %>
+                <%= image_tag user.get_profile_image, :size =>"80x80", class: "rounded-circle"; %><%= user.name %>
               <% end %>
             </div>
             <div class="col-md-3">

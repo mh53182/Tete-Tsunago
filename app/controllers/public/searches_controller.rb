@@ -21,6 +21,9 @@ class Public::SearchesController < ApplicationController
       @records = Post.search_for(@keyword, @category).order(created_at: :desc).page(params[:page]).per(20)
     end
     @post = Post.new
+    
+    # 検索結果がゼロの場合のビューでの表示に使用
+    @records.count
   end
 
 end

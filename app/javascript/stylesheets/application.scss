@@ -61,6 +61,7 @@ footer {
   height: calc(100vh - 130px);
 }
 
+//バリデーションエラー時のレイアウト崩れ対策 
 .field_with_errors {
   display: contents;
 }
@@ -110,10 +111,14 @@ footer {
   transform: translate(0, 0) scale(0.8);   /* 大きさ0.8倍から等倍にモーダルが拡大される */
 }
 
-// 画像サイズ
+// モーダル表示画像サイズ
 .show-image-size {
   max-width: 500px;
   height: auto;
   object-fit: contain;
 }
 
+// モーダル内コメント一覧表示調整
+td.comment-nowrap {
+  white-space: nowrap;
+}

@@ -17,6 +17,9 @@ class Admin::SearchesController < ApplicationController
     when "comment"
       @records = Comment.where("body LIKE ?", "%" + @keyword + "%").order(created_at: :desc).page(params[:page]).per(20)
     end
+    
+    # 検索結果がゼロの場合のビューでの表示に使用
+    @records.count
   end
 
 end

@@ -7,18 +7,18 @@
       <div class="row mt-4 justify-content-center">
         <div class="col-md-2">
           <div class="row justify-content-center">
-            <%= image_tag @user.get_profile_image, :size =>'70x70' %>
+            <%= image_tag @user.get_profile_image, :size =>"70x70", class: "rounded-circle"; %>
           </div>
           <div class="row mt-2">
-            <%= link_to "ユーザー編集", edit_admin_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
+            <%= link_to "ユーザー編集", edit_admin_user_path(@user), class: "btn btn-info btn-block" %>
           </div>
         </div>
         <div class="col-md-4 ml-3">
           <h5>自己紹介：</h5>
           <p><%= @user.introduction %></p>
         </div>
-        <div class="col-md-3 ml-2">
-          <h5>お子様:</h5>
+        <div class="col-md-2 ml-2">
+          <h5>お子様：</h5>
           <% if @user.children.any? %>
             <ul>
               <% @user.children.each do |child| %>
@@ -30,6 +30,31 @@
           <% else %>
             <p>登録されていません</p>
           <% end %>
+        </div>
+        <div class="col-md-2 ml-2">
+          <h5>ステータス：</h5>
+          <table>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <% if @user.is_active == true %>
+                  <span class="text-success">有効</span>
+                <% else %>
+                  <span class="text-danger">退会</span>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>公開ステータス</td>
+              <td>
+                <% if @user.is_public == true %>
+                  <span class="text-success">公開</span>
+                <% else %>
+                  <span class="text-danger">非公開</span>
+                <% end %>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
       <div class="row">

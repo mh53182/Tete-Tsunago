@@ -16,12 +16,12 @@
         <% if user_signed_in? %>
           <li>
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> みんなの"つなご"
+              <i class="fa-solid fa-handshake-angle"></i> みんなの投稿
             <% end %>
           </li>
           <li>
             <%=  link_to user_path(current_user), class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> マイページ
+              <i class="fa-solid fa-circle-user"></i> マイページ
             <% end %>
           </li>
           <li>
@@ -42,7 +42,7 @@
         <% else %>
           <li>
             <%= link_to about_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-handshake-angle"></i> ててつなご について
+              <i class="fa-solid fa-circle-info"></i> ててつなご について
             <% end %>
           </li>
           <li>

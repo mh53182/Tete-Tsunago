@@ -26,8 +26,14 @@ class Public::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorites).order(created_at: :desc).page(params[:page]).per(20)
+
+    # PostとFavoriteのデータを結合して取得
+    # そのうちfavoriteのuser_idが@userであるものを取得
+    # さらに有効かつ公開ユーザーの投稿に絞り込み新着順に並べ替え
+    @posts = Post.joins(:favorites).where(favorites: { user_id: @user.id })
+                 .from_active_users.from_public_users
+                 .order(created_at: :desc).page(params[:page]).per(20)
+                 
     @post = Post.new
   end
 

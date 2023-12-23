@@ -20,7 +20,7 @@ class Admin::CommentsController < ApplicationController
   # コメント一覧からの削除用
   def destroy_index
     destroy_comment
-    redirect_to admin_comments_path
+    redirect_back fallback_location: admin_comments_path
   end
 
   private

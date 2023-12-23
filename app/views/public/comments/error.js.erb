@@ -1,0 +1,4 @@
+<% if @comment.errors.any? %>
+  $("#comments-error").html("<%= j(render 'layouts/errors', obj: @comment) %>");
+  $("textarea").val('');
+<% end %>

@@ -16,7 +16,7 @@
             <div class="card-body">
               <h5 class="card-title">
                 <%= link_to admin_user_path(post.user) do%>
-                  <%= image_tag post.user.get_profile_image, size:'40x40' %>
+                  <%= image_tag post.user.get_profile_image, size: "40x40", class: "rounded-circle"; %>
                   <%= post.user.name %>
                 <% end %>
               </h5>
@@ -39,7 +39,7 @@
                     <tr>
                       <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
                       <td>
-                        <%= link_to "削除", post_path(post.id), method: :delete, 'data-confirm' => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
+                        <%= link_to "削除", admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
                       </td>
                     </tr>
                   </table>

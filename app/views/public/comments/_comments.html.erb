@@ -1,18 +1,25 @@
-<% post.comments.each do |comment| %>
-  <tr>
-    <td>
-      <%= link_to (comment.user) do %>
-        <%= image_tag comment.user.get_profile_image, size:"50x50" %><br>
-        <%= comment.user.name %>
-      <% end %>
-    </td>
-    <td>
-      <%= comment.body %>
-    </td>
-    <% if comment.user == current_user %>
+<table class="table table-striped table-borderless">
+  <% post.comments.each do |comment| %>
+    <tr>
       <td>
-        <%= link_to "削除", post_comment_path(post.id, comment.id), method: :delete, class: "btn btn-danger", remote: true, 'data-confirm' => "本当に削除しますか？" %>
+        <%= link_to (comment.user) do %>
+          <%= image_tag comment.user.get_profile_image, size: "30x30", class: "rounded-circle"; %>
+        <% end %>
       </td>
-    <% end %>
-  </tr>
-<% end %>
+      <td class="comment-nowrap">
+        <%= link_to (comment.user) do %>
+          <%= comment.user.name %>
+        <% end %>
+      </td>
+      <td style="word-break: break-word">
+        <%= comment.body %>
+      </td>
+      <td class="comment-nowrap">
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(post.id, comment.id), method: :delete,
+              class: "btn btn-danger btn-sm", remote: true, "data-confirm" => "本当に削除しますか？" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

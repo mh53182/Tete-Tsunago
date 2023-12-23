@@ -19,6 +19,10 @@
           <h3>"<%= @keyword %><%= " / " + temp_post.category_i18n unless @category.blank? %>" の投稿検索結果</h3>
           <%= render "public/posts/index", posts: @records %>
         <% end %>
+        
+        <% if @records.count == 0 %>
+          <h5>検索結果がありませんでした</h5>
+        <% end %>
       </div>
     </div>
   </div>
