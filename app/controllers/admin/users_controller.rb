@@ -12,13 +12,18 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    
+    # editページへのアクセス元（indexまたはshowまたは検索結果表示）のセッションへの保存
+    session[:previous_url] = request.referer
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報の更新が完了しました"
-      redirect_to admin_user_path(@user)
+      
+      # セッションに保存したeditページへのアクセス元へリダイレクト
+      redirect_to session[:previous_url]
     else
       flash.now[:alert] = "入力内容に不備があります"
       render :edit

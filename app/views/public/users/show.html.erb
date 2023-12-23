@@ -7,6 +7,42 @@
       <% if current_user == @user %>
         <%= link_to "いいねした投稿一覧", favorites_user_path(@user), class: "btn btn-info btn-block" %>
         <%= link_to "フォローしているユーザー", followings_relationship_path(@user), class: "btn btn-info btn-block" %>
+        <%= link_to "フォローされているユーザー", followers_relationship_path(@user), class: "btn btn-info btn-block" %>
+        
+        
+
+          <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#collapseChildren" aria-expanded="false" aria-controls="collapseExample">
+            お子様情報
+          </button>
+
+        <div class="collapse" id="collapseChildren">
+          <div class="card card-body">
+            <% if @user.children.any? %>
+              <ul>
+                <% @user.children.each do |child| %>
+                  <li>
+                    ・<%= link_to child.nickname, child_posts_path(child) %>
+                    <% if current_user == @user %>
+                      <%= link_to "編集", edit_child_path(child) %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>登録されていません</p>
+            <% end %>
+            <% if current_user == @user %>
+              <%= link_to "お子様新規登録", new_child_path, class: "btn btn-info btn-block" %>
+            <% end %>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        <!--マイページのみカレンダー表示-->
         <div class="calendar mt-2">
           <%= month_calendar events: @posts do |date, posts| %>
             <%= date.day %>

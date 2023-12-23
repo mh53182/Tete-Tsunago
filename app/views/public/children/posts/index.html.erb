@@ -1,3 +1,12 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <!--サイドバー-->
+    <div class="col-md-3" style="min-height:100vh" >
+      <%= render 'public/posts/form', post: @post %>
+
+
+
+
 <% @posts.each do |post| %>
   <div>
     <h2><%= post.body %></h2>

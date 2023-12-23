@@ -14,18 +14,24 @@
             今日、気付いたら卒業していたことは？<br><br></p>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="button-wrap">
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info" %>
+        
+        <% if user_signed_in? %>
+          <div class="row justify-content-center">
+            <%= link_to "マイページへ", user_path(current_user), class: "btn btn-outline-info" %>
           </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="button-wrap mt-3">
-            <%= link_to "ゲストログイン(お試し用)", users_guest_sign_in_path, method: :post, class: "btn btn-outline-info" %>
-            <%= link_to "投稿一覧を見てみる", posts_path, class: "btn btn-outline-info" %>
+        <% else %>
+          <div class="row justify-content-center">
+            <div class="button-wrap">
+              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info" %>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info" %>
+            </div>
           </div>
-        </div>
+          <div class="row justify-content-center">
+            <div class="button-wrap mt-3">
+              <%= link_to "ゲストログイン(お試し用)", users_guest_sign_in_path, method: :post, class: "btn btn-outline-info" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="col-md-6 px-0">
