@@ -3,7 +3,7 @@ class Public::Children::PostsController < ApplicationController
   
   def index
     @child = Child.find(params[:child_id])
-    @posts = @child.posts.order(created_at: :desc).page(params[:page]).per(4)
+    @posts = @child.posts.order(created_at: :desc).page(params[:page]).per(20)
     @post = Post.new
   end
   

@@ -17,6 +17,9 @@ class Post < ApplicationRecord
   # 有効アカウントによる投稿の取得
   scope :from_active_users, -> { joins(:user).where(users: { is_active: true }) }
   
+  # フォローしているユーザーの投稿を取得
+  scope :from_followings_of, ->(user) { where(user: user.followings) }
+
   # カテゴリカラムによる絞り込み
   scope :by_category, ->(category) { where(category: category) if category.present? }
 

@@ -1,12 +1,12 @@
 class Admin::UsersController < ApplicationController
 
   def index
-    @users = User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(20)
     @comments = @user.comments
   end
 

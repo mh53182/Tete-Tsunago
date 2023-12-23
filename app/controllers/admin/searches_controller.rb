@@ -11,11 +11,11 @@ class Admin::SearchesController < ApplicationController
 
     case @model
     when "user"
-      @records = User.where("name LIKE ?", "%" + @keyword + "%").order(created_at: :desc)
+      @records = User.where("name LIKE ?", "%" + @keyword + "%").order(created_at: :desc).page(params[:page]).per(20)
     when "post"
-      @records = Post.where("body LIKE ?", "%" + @keyword + "%").order(created_at: :desc)
+      @records = Post.where("body LIKE ?", "%" + @keyword + "%").order(created_at: :desc).page(params[:page]).per(20)
     when "comment"
-      @records = Comment.where("body LIKE ?", "%" + @keyword + "%").order(created_at: :desc)
+      @records = Comment.where("body LIKE ?", "%" + @keyword + "%").order(created_at: :desc).page(params[:page]).per(20)
     end
   end
 

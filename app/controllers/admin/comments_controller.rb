@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
 
   def index
-    @comments = Comment.includes(:post).all.order(created_at: :desc)
+    @comments = Comment.includes(:post).all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show

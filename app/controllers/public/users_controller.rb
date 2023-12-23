@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
-    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(4)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def edit
@@ -27,7 +27,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorites).order(created_at: :desc)
+    @favorite_posts = Post.where(id: favorites).order(created_at: :desc).page(params[:page]).per(20)
     @post = Post.new
   end
 
@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
     user = current_user
     user.update(is_active: false)
     reset_session
-    redirect_to root_path, notice: "退会が完了しました"
+    redirect_to root_path, notice: "退会が完了しました。　ご利用ありがとうございました。"
   end
 
   private

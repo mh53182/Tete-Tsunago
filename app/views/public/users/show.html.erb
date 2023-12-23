@@ -4,17 +4,16 @@
     <div class="col-md-3" style="min-height:100vh" >
       <%= render 'public/posts/form', post: @post %>
 
-      <% if current_user == @user %>
+      <div class="menu mt-4">
         <%= link_to "いいねした投稿一覧", favorites_user_path(@user), class: "btn btn-info btn-block" %>
         <%= link_to "フォローしているユーザー", followings_relationship_path(@user), class: "btn btn-info btn-block" %>
         <%= link_to "フォローされているユーザー", followers_relationship_path(@user), class: "btn btn-info btn-block" %>
-        
-        
-
-          <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#collapseChildren" aria-expanded="false" aria-controls="collapseExample">
-            お子様情報
-          </button>
-
+  
+        <button type="button" class="btn btn-info btn-block"
+                data-toggle="collapse" data-target="#collapseChildren"
+                aria-expanded="false" aria-controls="collapseChildren">
+          お子様情報
+        </button>
         <div class="collapse" id="collapseChildren">
           <div class="card card-body">
             <% if @user.children.any? %>
@@ -23,7 +22,7 @@
                   <li>
                     ・<%= link_to child.nickname, child_posts_path(child) %>
                     <% if current_user == @user %>
-                      <%= link_to "編集", edit_child_path(child) %>
+                      <%= link_to "（ニックネーム編集）", edit_child_path(child) %>
                     <% end %>
                   </li>
                 <% end %>
@@ -32,27 +31,25 @@
               <p>登録されていません</p>
             <% end %>
             <% if current_user == @user %>
-              <%= link_to "お子様新規登録", new_child_path, class: "btn btn-info btn-block" %>
+              <%= link_to "お子様情報登録", new_child_path, class: "btn btn-info btn-sm" %>
             <% end %>
           </div>
         </div>
-        
-        
-        
-        
-        
-        
-        <!--マイページのみカレンダー表示-->
-        <div class="calendar mt-2">
-          <%= month_calendar events: @posts do |date, posts| %>
-            <%= date.day %>
-            <% posts.each do |post| %>
-              <%= link_to "●", post_path(post) %>
-            <% end %>
-          <% end %>
+  
+        <button type="button" class="btn btn-info btn-block mt-2"
+                data-toggle="collapse" data-target="#collapseSearch"
+                aria-expanded="false" aria-controls="collapseSearch">
+          検索
+        </button>
+        <div class="collapse" id="collapseSearch">
+          <div class="card card-body">
+            <%= render "public/searches/form" %>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
+    
+
 
     <!--メイン-->
     <div class="col-md-8 offset-md-1">
@@ -61,44 +58,24 @@
         <div class="row mt-4">
           <div class="col-md-2">
             <div class="row justify-content-center">
-              <%= image_tag @user.get_profile_image, :size =>'70x70' %>
-            </div>
-            <div class="row mt-2">
-              <% if current_user != @user %>
-                <% if current_user.following?(@user) %>
-                  <%= link_to "フォローを外す", relationship_path(@user), method: :delete, class: "btn btn-info" %>
-                <% else %>
-                  <%= link_to "フォローする", relationship_path(@user), method: :post, class: "btn btn-success" %>
-                <% end %>
-              <% else %>
-                <% unless @user.guest_user? %>
-                  <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
-                <% end %>
-              <% end %>
+              <%= image_tag @user.get_profile_image, :size =>"80x80", class: "mt-3 rounded-circle"; %>
             </div>
           </div>
           <div class="col-md-6 ml-3">
             <h5>自己紹介：</h5>
             <p><%= @user.introduction %></p>
           </div>
-          <div class="col-md-3 ml-2">
-            <h5>お子様:</h5>
-            <% if @user.children.any? %>
-              <ul>
-                <% @user.children.each do |child| %>
-                  <li>
-                    ・<%= link_to child.nickname, child_posts_path(child) %>
-                    <% if current_user == @user %>
-                      <%= link_to "編集", edit_child_path(child) %>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
+          <div class="col-md-3 ml-2 d-flex align-items-end">
+            <% if current_user != @user %>
+              <% if current_user.following?(@user) %>
+                <%= link_to "フォローを外す", relationship_path(@user), method: :delete, class: "btn btn-info" %>
+              <% else %>
+                <%= link_to "フォローする", relationship_path(@user), method: :post, class: "btn btn-success" %>
+              <% end %>
             <% else %>
-              <p>登録されていません</p>
-            <% end %>
-            <% if current_user == @user %>
-              <%= link_to "お子様新規登録", new_child_path, class: "btn btn-info btn-block" %>
+              <% unless @user.guest_user? %>
+                <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
+              <% end %>
             <% end %>
           </div>
         </div>
