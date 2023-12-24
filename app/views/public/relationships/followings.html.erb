@@ -2,18 +2,18 @@
   <div class="row">
     <!--サイドバー-->
     <div class="col-md-3" style="min-height:100vh" >
-      <%= render 'public/posts/form', post: @post %>
-      <h5 class="mt-4">フォロー中のユーザー</h5>
-      <%= render 'public/users/index', users: @users %>
+      <%= render "public/posts/form", post: @post %>
+      <h5 class="mt-4"><%= @user.name %>さんが フォローしているユーザー</h5>
+      <%= render "public/users/index", users: @users %>
     </div>
     
     <!--メイン-->
     <div class="col-md-8 offset-md-1">
       <div class="col-md-12">
-        <h3>フォロー中のユーザーの投稿</h3>
+        <h3><%= @user.name %>さんが フォローしているユーザーの投稿</h3>
         <div class="row">
           <div class="col-md-12">
-            <%= render 'public/posts/index', posts: @posts %>
+            <%= render "public/posts/index", posts: @posts %>
           </div>
         </div>
       </div>

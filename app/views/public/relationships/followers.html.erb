@@ -1,3 +1,31 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <!--サイドバー-->
+    <div class="col-md-3" style="min-height:100vh" >
+      <%= render "public/posts/form", post: @post %>
+      <!--<h5 class="mt-4"><%#= @user.name %>さんが フォローしているユーザー</h5>-->
+      <%#= render 'public/users/index', users: @users %>
+    </div>
+
+    <!--メイン-->
+    <div class="col-md-8 offset-md-1">
+      <div class="col-md-12">
+        <h3><%= @user.name %>さんを フォローしているユーザー</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <%= render "public/searches/user_index", users: @users %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <h2>Follower Users</h2>
 
 <% if @users.exists? %>

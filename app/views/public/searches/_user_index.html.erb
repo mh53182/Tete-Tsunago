@@ -1,17 +1,27 @@
-<% users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <div class="card w-50 mt-4 shadow">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2">
-            <%= image_tag user.get_profile_image %>
-          </div>
-          <div class="col-md-9 offset-1">
-            <%= user.name %>
-            <%= user.introduction %>
+<!--ユーザー検索結果表示用-->
+
+<div class="row row-cols-md-2">
+  <% users.each do |user| %>
+    <div class="col-md-6 px-1">
+      <%= link_to user_path(user) do %>
+        <div class="card mt-3 shadow" style="max-width: 450px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <%= image_tag user.get_profile_image, size: "40x40", class: "rounded-circle"; %>
+              </div>
+              <div class="col-md-9 ml-3">
+                <div class="row">
+                  <%= user.name %>
+                </div>
+                <div class="row mt-2">
+                  <%= user.introduction %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
-<% end %>
+</div>

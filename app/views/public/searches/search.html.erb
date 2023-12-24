@@ -11,17 +11,17 @@
     <div class="col-md-8 offset-md-1">
       <div class="col-md-12">
         <% if @model == "user" %>
-          <h3>"<%= @keyword %>" のユーザー検索結果</h3>
+          <h3>" <%= @keyword %> " のユーザー検索結果</h3>
           <%= render "user_index", users: @records %>
 
         <% elsif @model == "post" %>
           <% temp_post = Post.new(category: @category) %>
-          <h3>"<%= @keyword %><%= " / " + temp_post.category_i18n unless @category.blank? %>" の投稿検索結果</h3>
+          <h3>" <%= @search_description %> " の投稿検索結果</h3>
           <%= render "public/posts/index", posts: @records %>
         <% end %>
         
         <% if @records.count == 0 %>
-          <h5>検索結果がありませんでした</h5>
+          <h5>条件に一致する結果はありませんでした</h5>
         <% end %>
       </div>
     </div>

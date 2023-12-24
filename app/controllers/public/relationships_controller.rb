@@ -27,8 +27,8 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followers
-    user = User.find(params[:id])
-    @users = user.followers.is_active.is_public
+    @user = User.find(params[:id])
+    @users = @user.followers.is_active.is_public
     @post = Post.new
   end
 

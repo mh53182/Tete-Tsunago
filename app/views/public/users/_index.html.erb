@@ -1,26 +1,26 @@
-<!--フォロー中のユーザー用　ユーザー一覧-->
+<!--フォロー中のユーザー用　ユーザー一覧（縦）-->
 
 <% if users.exists? %>
   <% users.each do |user| %>
-    <div class="card mt-4 shadow">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-2">
-            <%= link_to user_path(user) do %>
-              <%= image_tag user.get_profile_image, size:'40x40' %>
-            <% end %>
-          </div>
-          <div class="col-md-9 offset-1">
-            <div class="row">
-              <%= user.name %>
+    <%= link_to user_path(user) do %>
+      <div class="card mt-4 shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+              <%= image_tag user.get_profile_image, size: "40x40", class: "rounded-circle"; %>
             </div>
-            <div class="row">
-              <%= user.introduction %>
+            <div class="col-md-9 offset-1">
+              <div class="row">
+                <%= user.name %>
+              </div>
+              <div class="row">
+                <%= user.introduction %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 <% else %>
   <P>まだフォローしていません</P>
