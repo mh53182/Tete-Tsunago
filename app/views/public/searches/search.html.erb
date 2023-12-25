@@ -3,8 +3,16 @@
     <div class="col-md-3" style="min-height:100vh" >
       <%= render "public/posts/form", post: @post %>
       <div class="search mt-3 ml-2">
-        <h4>検索</h4>
-          <%= render "public/searches/form" %>
+        <button type="button" class="btn btn-warning btn-block mt-2"
+                data-toggle="collapse" data-target="#collapseSearch"
+                aria-expanded="false" aria-controls="collapseSearch">
+          検索
+        </button>
+        <div class="collapse" id="collapseSearch">
+          <div class="card card-body">
+            <%= render "public/searches/form" %>
+          </div>
+        </div>
       </div>
     </div>
 

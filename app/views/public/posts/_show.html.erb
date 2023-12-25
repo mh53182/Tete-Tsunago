@@ -31,10 +31,9 @@
               <% end %>
             </div>
             <div class="col-md-3">
-              <p>いいね：</p>
-              <p id="favorite_buttons_<%= post.id %>_modal">
+              <span id="favorite_buttons_<%= post.id %>_modal">
                 <%= render "public/favorites/favorite", post: @post %>
-              </p>
+              </span>
             </div>
           </div>
           <div class="row mt-3">

@@ -12,7 +12,7 @@
           退会する場合は、「退会する」をクリックしてください。
         </p>
         <div class="my-5">
-          <span><%= link_to "マイページに戻る", user_path(@user), class: "btn btn-primary mr-2" %></span>
+          <span><%= link_to "マイページに戻る", user_path(@user), class: "btn btn-info mr-2" %></span>
           <span><%= link_to "退会する", withdraw_user_path(@user), method: :patch, class: "btn btn-danger ml-2", "data-confirm" => "[OK]を押すと退会処理が行われます" %></span>
         </div>
       </div>

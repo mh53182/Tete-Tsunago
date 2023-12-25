@@ -1,9 +1,9 @@
 <% if post.favorited_by?(current_user) %>
   <%= link_to post_favorite_path(post), method: :delete, remote: true, data: {"turbolinks" => false} do %>
-    <p>いいね：<%= image_tag('favorited.png', style: "max-width: 30px; min-height: 30px;") %>（<%= post.favorites.count %>）</p>
+    <span>いいね：<%= image_tag('favorited.png', style: "max-width: 30px; min-height: 30px;") %>（<%= post.favorites.count %>）</span>
   <% end %>
 <% else %>
   <%= link_to post_favorite_path(post), method: :post, remote: true, data: {"turbolinks" => false} do %>
-    <p>いいね：<%= image_tag('not_favorited.png', style: "max-width: 30px; min-height: 30px;") %>（<%= post.favorites.count %>）</p> 
+    <span>いいね：<%= image_tag('not_favorited.png', style: "max-width: 30px; min-height: 30px;") %>（<%= post.favorites.count %>）</span>
   <% end %>
 <% end %>

@@ -3,9 +3,9 @@
     <div class="col-md-6 mx-auto mt-5 d-flex align-items-center flex-column">
       <h3>お子様新規登録</h3>
       <%= form_with model: @child do |f| %>
-      <%= render 'layouts/errors', obj: f.object %>
+        <%= render "layouts/errors", obj: f.object %>
         <div class="form-group mt-5">
-          <%= f.label :nickname, "ニックネーム" %>
+          <%= f.label :nickname, "ニックネーム（皆さんに呼ばれたい名前で登録して）" %>
           <%= f.text_field :nickname %>
         </div>
         <div class="form-group">
