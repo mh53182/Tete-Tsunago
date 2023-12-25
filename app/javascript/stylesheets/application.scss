@@ -62,6 +62,7 @@ footer {
   color: #930403;
 }
 
+// topページ背景設定
 .main-container {
   background-image: url("../images/top.jpg");
   height: calc(100vh - 140px);
@@ -69,7 +70,7 @@ footer {
   background-position: center;
 }
 
-// メインビジュアルを表示した際にヘッダー・フッターの隙間を無くす
+// メインビジュアル（アバウトページへ移行）を表示した際にヘッダー・フッターの隙間を無くす
 .main-visual {
   background-image: url('../images/about.jpg');
   background-size: cover;
