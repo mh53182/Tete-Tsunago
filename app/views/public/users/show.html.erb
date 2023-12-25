@@ -5,11 +5,11 @@
       <%= render "public/posts/form", post: @post %>
 
       <div class="menu mt-4">
-        <%= link_to "いいねした投稿一覧", favorites_user_path(@user), class: "btn btn-info btn-block" %>
-        <%= link_to "フォローしているユーザー", followings_relationship_path(@user), class: "btn btn-info btn-block" %>
-        <%= link_to "フォローされているユーザー", followers_relationship_path(@user), class: "btn btn-info btn-block" %>
-  
-        <button type="button" class="btn btn-info btn-block"
+        <%= link_to "いいねした投稿一覧", favorites_user_path(@user), class: "btn btn-warning btn-block" %>
+        <%= link_to "フォローしているユーザー", followings_relationship_path(@user), class: "btn btn-danger btn-block" %>
+        <%= link_to "フォローされているユーザー", followers_relationship_path(@user), class: "btn btn-warning btn-block" %>
+
+        <button type="button" class="btn btn-danger btn-block"
                 data-toggle="collapse" data-target="#collapseChildren"
                 aria-expanded="false" aria-controls="collapseChildren">
           お子様情報
@@ -31,12 +31,12 @@
               <p>登録されていません</p>
             <% end %>
             <% if current_user == @user %>
-              <%= link_to "お子様情報登録", new_child_path, class: "btn btn-info btn-sm" %>
+              <%= link_to "お子様情報登録", new_child_path, class: "btn btn-success btn-sm" %>
             <% end %>
           </div>
         </div>
-  
-        <button type="button" class="btn btn-info btn-block mt-2"
+
+        <button type="button" class="btn btn-warning btn-block mt-2"
                 data-toggle="collapse" data-target="#collapseSearch"
                 aria-expanded="false" aria-controls="collapseSearch">
           検索
@@ -48,8 +48,6 @@
         </div>
       </div>
     </div>
-    
-
 
     <!--メイン-->
     <div class="col-md-8 offset-md-1">
@@ -74,7 +72,7 @@
               <% end %>
             <% else %>
               <% unless @user.guest_user? %>
-                <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
+                <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-info btn-block" %>
               <% end %>
             <% end %>
           </div>

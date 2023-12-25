@@ -27,10 +27,14 @@ ul {
 }
 
 header {
-  height: 80px;
+  height: 90px;
   width: 100%;
   background: #ffffff;
   text-decoration: none;
+}
+
+.navbar {
+  padding: 0;
 }
 
 footer {
@@ -44,8 +48,7 @@ footer {
 
 // フラッシュメッセージ
 .flash-message {
-  // border-radius: 5px;
-  padding: 10px 24px;
+  padding: 6px 27px;
   margin: 0px;
 }
 
@@ -61,7 +64,7 @@ footer {
 
 .main-container {
   background-image: url("../images/top.jpg");
-  height: calc(100vh - 130px);
+  height: calc(100vh - 140px);
   background-size: cover;
   background-position: center;
 }
@@ -71,7 +74,7 @@ footer {
   background-image: url('../images/about.jpg');
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 140px);
 }
 
 //バリデーションエラー時のレイアウト崩れ対策
@@ -134,4 +137,191 @@ footer {
 // モーダル内コメント一覧表示調整
 td.comment-nowrap {
   white-space: nowrap;
+}
+
+.btn {
+  border-radius: 40px;
+}
+
+// ボタン色カスタマイズ-info
+.btn-info {
+    background: #9471B6; //ボタンの背景色
+    border-color: #885bb5;
+    color: #ffffff; //ボタンのテキストの色
+}
+
+.btn-info:hover, .btn-info:focus,
+.btn-info:active, .btn-info:active:focus, .btn-info:active:hover, .btn-info:active.focus,
+.btn-info.active, .btn-info.active:focus, .btn-info.active:hover, .btn-info.active.focus,
+.open > .dropdown-toggle.btn-info,
+.open > .dropdown-toggle.btn-info:hover,
+.open > .dropdown-toggle.btn-info:focus,
+.open > .dropdown-toggle.btn-info.focus,
+.btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus,
+.btn-info.disabled.focus, .btn-info[disabled].focus, fieldset[disabled] .btn-info.focus {
+    background: #9a7fb5; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    border-color: #885bb5;
+    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-info:not(:disabled):not(.disabled):active,
+.btn-info:not(:disabled):not(.disabled).active,
+.show > .btn-info.dropdown-toggle {
+  color: #ffffff;
+  background-color: #7f48b5;
+  border-color: #885bb5;
+}
+
+.btn-info:focus, .btn-info.focus,
+.btn-info:active:focus, .btn-info.active.focus,
+.btn-info:not(:disabled):not(.disabled):active:focus,
+.btn-info:not(:disabled):not(.disabled).active:focus,
+.show > .btn-info.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(154,127,181,0.5);
+}
+
+// ボタン色カスタマイズ-danger
+.btn-danger {
+    background: #E39270; //ボタンの背景色
+    border-color: #e3845b;
+    color: #ffffff; //ボタンのテキストの色
+}
+
+.btn-danger:hover, .btn-danger:focus,
+.btn-danger:active, .btn-danger:active:focus, .btn-danger:active:hover, .btn-danger:active.focus,
+.btn-danger.active, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger.active.focus,
+.open > .dropdown-toggle.btn-danger,
+.open > .dropdown-toggle.btn-danger:hover,
+.open > .dropdown-toggle.btn-danger:focus,
+.open > .dropdown-toggle.btn-danger.focus,
+.btn-danger.disabled:hover, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus, .btn-danger[disabled]:focus, fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled.focus, .btn-danger[disabled].focus, fieldset[disabled] .btn-danger.focus {
+    background: #e3b39f; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    border-color: #e3845b;
+    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-danger:not(:disabled):not(.disabled):active,
+.btn-danger:not(:disabled):not(.disabled).active,
+.show > .btn-danger.dropdown-toggle {
+  color: #ffffff;
+  background-color: #e37444;
+  border-color: #e3845b;
+}
+
+.btn-danger:focus, .btn-danger.focus,
+.btn-danger:active:focus, .btn-danger.active.focus,
+.btn-danger:not(:disabled):not(.disabled):active:focus,
+.btn-danger:not(:disabled):not(.disabled).active:focus,
+.show > .btn-danger.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(227,179,159,0.5);
+}
+
+// ボタン色カスタマイズ-success
+.btn-success {
+    background: #64cc83; //ボタンの背景色
+    border-color: #64cc83;
+    color: #ffffff; //ボタンのテキストの色
+}
+
+.btn-success:hover, .btn-success:focus,
+.btn-success:active, .btn-success:active:focus, .btn-success:active:hover, .btn-success:active.focus,
+.btn-success.active, .btn-success.active:focus, .btn-success.active:hover, .btn-success.active.focus,
+.open > .dropdown-toggle.btn-success,
+.open > .dropdown-toggle.btn-success:hover,
+.open > .dropdown-toggle.btn-success:focus,
+.open > .dropdown-toggle.btn-success.focus,
+.btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover,
+.btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus,
+.btn-success.disabled.focus, .btn-success[disabled].focus, fieldset[disabled] .btn-success.focus {
+    background: #9fe3b3; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    border-color: #64cc83;
+    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #ffffff;
+  background-color: #64cc83;
+  border-color: #64cc83;
+}
+
+.btn-success:focus, .btn-success.focus,
+.btn-success:active:focus, .btn-success.active.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(159,227,179,0.5);
+}
+
+// ボタン色カスタマイズ-warning
+.btn-warning {
+    background: #F4D56E; //ボタンの背景色
+    border-color: #f5cd49;
+    color: #5e432e; //ボタンのテキストの色
+}
+
+.btn-warning:hover, .btn-warning:focus,
+.btn-warning:active, .btn-warning:active:focus, .btn-warning:active:hover, .btn-warning:active.focus,
+.btn-warning.active, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning.active.focus,
+.open > .dropdown-toggle.btn-warning,
+.open > .dropdown-toggle.btn-warning:hover,
+.open > .dropdown-toggle.btn-warning:focus,
+.open > .dropdown-toggle.btn-warning.focus,
+.btn-warning.disabled:hover, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus, .btn-warning[disabled]:focus, fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled.focus, .btn-warning[disabled].focus, fieldset[disabled] .btn-warning.focus {
+    background: #F5de93; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    border-color: #f5cd49;
+    color: #5e432e; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-warning:not(:disabled):not(.disabled):active,
+.btn-warning:not(:disabled):not(.disabled).active,
+.show > .btn-warning.dropdown-toggle {
+  color: #5e432e;
+  background-color: #f5de93;
+  border-color: #f5cd49;
+}
+
+.btn-warning:focus, .btn-warning.focus,
+.btn-warning:active:focus, .btn-warning.active.focus,
+.btn-warning:not(:disabled):not(.disabled):active:focus,
+.btn-warning:not(:disabled):not(.disabled).active:focus,
+.show > .btn-warning.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(245,222,147,0.5);
+}
+
+// 見出しのアクセントカラー_グリーン
+h2, h3, h4 {
+  position: relative;
+  display: inline-block;
+}
+
+h2::after,h3::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 0.8em;
+  left: 0;
+  top: 50%;
+  background: linear-gradient(to right, #6FE392, transparent);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+// 見出しのアクセントカラー_イエロー
+h4::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 0.8em;
+  left: 0;
+  top: 50%;
+  background: linear-gradient(to right, #e39270, transparent);
+  border-radius: 10px;
+  z-index: -1;
 }
