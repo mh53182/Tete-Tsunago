@@ -1,10 +1,10 @@
 <div class="container-fluid mt-3">
   <div class="row">
     <div class="col-md-3" style="min-height:100vh" >
-      <%= render 'public/posts/form', post: @post %>
+      <%= render "public/posts/form", post: @post %>
       <div class="search mt-3 ml-2">
         <h4>検索</h4>
-          <%= render 'public/searches/form' %>
+          <%= render "public/searches/form" %>
       </div>
     </div>
 
@@ -18,10 +18,6 @@
           <% temp_post = Post.new(category: @category) %>
           <h3>" <%= @search_description %> " の投稿検索結果</h3>
           <%= render "public/posts/index", posts: @records %>
-        <% end %>
-        
-        <% if @records.count == 0 %>
-          <h5>条件に一致する結果はありませんでした</h5>
         <% end %>
       </div>
     </div>

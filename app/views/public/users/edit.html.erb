@@ -1,15 +1,5 @@
 <div class="container-fluid mt-3">
   <div class="row">
-
-    <% if @user.profile_image.attached? %>
-      <div class="col-md-3">
-        <p>登録されている画像：</p>
-        <%= image_tag @user.profile_image, size: "60x60" %>
-      </div>
-    <% else %>
-      <div class="col-md-3"></div>
-    <% end %>
-
     <div class="col-md-6 mx-auto d-flex align-items-center flex-column">
       <h4>ユーザー情報編集</h4>
       <div class="form mt-3">
@@ -56,6 +46,5 @@
       </div>
       <%= link_to "退会する", confirm_user_path(@user), class: "btn btn-outline-danger mt-4" %>
     </div>
-    <div class="col-md-3"></div>
   </div>
 </div>

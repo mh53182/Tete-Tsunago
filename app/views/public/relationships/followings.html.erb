@@ -3,7 +3,7 @@
     <!--サイドバー-->
     <div class="col-md-3" style="min-height:100vh" >
       <%= render "public/posts/form", post: @post %>
-      <h5 class="mt-4"><%= @user.name %>さんが フォローしているユーザー</h5>
+      <h5 class="mt-4"><%= @user.name %>さんが</h5><h5>フォローしているユーザー</h5>
       <%= render "public/users/index", users: @users %>
     </div>
     

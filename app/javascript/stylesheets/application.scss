@@ -10,11 +10,15 @@
 
 body {
   font-family: 'Zen Maru Gothic', sans-serif;
-  background-color: #E0FFF0;
-  color: #4A4A4A;
-  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
-  position: relative;/* ←相対位置 */
-  padding-bottom: 50px; /* ←フッターの高さを指定 */
+  background-color: #ffffcc;
+  color: #5e432e;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+a {
+  color: #5e432e;
 }
 
 // バリデーションエラー時のリスト表示"・"が要素からはみ出るため消去
@@ -25,6 +29,8 @@ ul {
 header {
   height: 80px;
   width: 100%;
+  background: #ffffff;
+  text-decoration: none;
 }
 
 footer {
@@ -32,7 +38,7 @@ footer {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background: #008080;
+  background: #ffffff;
   text-align: center;
 }
 
@@ -40,28 +46,35 @@ footer {
 .flash-message {
   // border-radius: 5px;
   padding: 10px 24px;
-  margin: 5px 0px;
+  margin: 0px;
 }
- 
+
 .flash-message.notice {
   background-color: #bcdfff;
   color: #0067C0;
 }
- 
+
 .flash-message.alert {
   background-color: #ffd4d1;
   color: #930403;
 }
 
+.main-container {
+  background-image: url("../images/top.jpg");
+  height: calc(100vh - 130px);
+  background-size: cover;
+  background-position: center;
+}
+
 // メインビジュアルを表示した際にヘッダー・フッターの隙間を無くす
 .main-visual {
-  background-image: url('../images/top.jpg');
+  background-image: url('../images/about.jpg');
   background-size: cover;
   background-position: center;
   height: calc(100vh - 130px);
 }
 
-//バリデーションエラー時のレイアウト崩れ対策 
+//バリデーションエラー時のレイアウト崩れ対策
 .field_with_errors {
   display: contents;
 }

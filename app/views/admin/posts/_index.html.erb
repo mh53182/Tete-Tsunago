@@ -3,52 +3,57 @@
 <div id="modal" class="hidden"></div>
 
 <div class="row row-cols-md-2 justify-content-center">
-  <% posts.each do |post| %>
-    <div class="col mb-4 d-flex justify-content-center">
-      <div class="card my-3 shadow" style="max-width: 500px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <%= link_to admin_post_path(post.id), remote: true do %>
-              <%= image_tag post.get_post_image, class: "img-fluid rounded-start" %>
-            <% end %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">
-                <%= link_to admin_user_path(post.user) do%>
-                  <%= image_tag post.user.get_profile_image, size: "40x40", class: "rounded-circle"; %>
-                  <%= post.user.name %>
-                <% end %>
-              </h5>
-              <p class="card-text"><%= post.body %></p>
-              <p class="card-text">
-                <small class="text-body-secondary">
-                  <table class="table table-borderless px-1">
-                    <tr>
-                      <td>カテゴリ：<%= post.category_i18n %></td>
-                      <td>
-                        <% if post.child.present? %>
-                          お子様：<%= post.child.nickname %>
-                        <% end %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>いいね（<%= post.favorites.count %>）</td>
-                      <td>コメント（<%= post.comments.count %>）</td>
-                    </tr>
-                    <tr>
-                      <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-                      <td>
-                        <%= link_to "削除", admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
-                      </td>
-                    </tr>
-                  </table>
-                </small>
-              </p>
+  <% if posts.exists? %>
+    <% posts.each do |post| %>
+      <div class="col mb-4 d-flex justify-content-center">
+        <div class="card my-3 shadow" style="max-width: 500px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <%= link_to admin_post_path(post.id), remote: true do %>
+                <%= image_tag post.get_post_image, class: "img-fluid rounded-start" %>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= link_to admin_user_path(post.user) do%>
+                    <%= image_tag post.user.get_profile_image, size: "40x40", class: "rounded-circle"; %>
+                    <%= post.user.name %>
+                  <% end %>
+                </h5>
+                <p class="card-text"><%= post.body %></p>
+                <p class="card-text">
+                  <small class="text-body-secondary">
+                    <table class="table table-borderless px-1">
+                      <tr>
+                        <td>カテゴリ：<%= post.category_i18n %></td>
+                        <td>
+                          <% if post.child.present? %>
+                            お子様：<%= post.child.nickname %>
+                          <% end %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>いいね（<%= post.favorites.count %>）</td>
+                        <td>コメント（<%= post.comments.count %>）</td>
+                      </tr>
+                      <tr>
+                        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+                        <td>
+                          <%= link_to "削除", admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
+                        </td>
+                      </tr>
+                    </table>
+                  </small>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+    <%= paginate posts %>
+  <% else %>
+    <h5 class="text-center mt-5">投稿はありません</h5>
   <% end %>
 </div>

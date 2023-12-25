@@ -5,6 +5,7 @@ class Public::Children::PostsController < ApplicationController
     @child = Child.find(params[:child_id])
     @posts = @child.posts.order(created_at: :desc).page(params[:page]).per(20)
     @post = Post.new
+    @user = @child.user
   end
   
 end

@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render "layouts/header" %>
     <main>
       <% flash.each do |message_type, message| %>
         <% if message.present? %>
@@ -22,6 +22,6 @@
       <% end %>
       <%= yield %>
     </main>
-    <%= render 'layouts/footer' %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

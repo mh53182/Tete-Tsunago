@@ -19,13 +19,18 @@ class Public::ChildrenController < ApplicationController
 
   def edit
     @child = Child.find(params[:id])
+    
+    # editページへのアクセス元（users/showまたはchildren/posts/index）のセッションへの保存
+    session[:previous_url] = request.referer
   end
 
   def update
     @child = Child.find(params[:id])
     if @child.update(child_params)
-      flash[:notece] = "お子様情報が更新されました"
-      redirect_to user_path(current_user)
+      flash[:notice] = "お子様情報が更新されました"
+      
+      # セッションに保存したeditページへのアクセス元へリダイレクト
+      redirect_to session[:previous_url]
     else
       flash.now[:alert] = "お子様情報が更新できませんでした"
       render :edit

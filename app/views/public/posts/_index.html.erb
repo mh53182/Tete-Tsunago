@@ -5,7 +5,7 @@
 <div class="row row-cols-md-2">
   <% if posts.exists? %>
     <% posts.each do |post| %>
-      <div class="col-md-6 px-1">
+      <div class="col mb-4 d-flex justify-content-center">
         <div class="card mt-3 shadow" style="max-width: 500px;">
           <div class="row g-0">
             <div class="col-md-4">
@@ -47,8 +47,8 @@
                         <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
                         <td>
                           <% if post.user == current_user %>
-                            <%= link_to "編集", edit_post_path(post.id) %>
-                            <%= link_to "削除", post_path(post.id), method: :delete, 'data-confirm' => "本当に削除しますか？" %>
+                            <%= link_to "編集", edit_post_path(post.id), class: "btn btn-info btn-sm" %>
+                            <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
                           <% end %>
                         </td>
                       </tr>
@@ -63,6 +63,6 @@
     <% end %>
     <%= paginate posts %>
   <% else %>
-    <p>投稿はありません</p>
+    <h5 class="text-center mt-5">投稿はありません</h5>
   <% end %>
 </div>

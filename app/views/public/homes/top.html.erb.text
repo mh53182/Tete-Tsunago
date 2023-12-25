@@ -4,29 +4,14 @@
       <div class="w-100">
         <div class="row justify-content-center">
           <div class="main-title mb-5">
-            <h1>てて つなご とは</h1>
+            <h1>てて つなご</h1>
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="sub-text text-center">
-            <p>
-              お子様が初めて立ったときのことを覚えていますか？<br><br>
-              
-              歩いたときのことは？<br><br>
-              
-              じゃあ、<br>
-              ハイハイをしなくなったのはいつですか？<br><br>
-              
-              てて つなご とは、<br>
-              日々子育てに忙しい保護者の皆様が繋がれるSNSです<br><br>
-              
-              あっという間に成長するこどもたちの「日常」と<br>
-              「できた」こと「卒業」したことを分けて投稿することができます<br><br>
-              
-              ちょっと疲れたら投稿を振り返り、懐かしんでみてください<br>
-              そして、誰かの「できた」「卒業」もちろん「日常」にも、<br>
-              おめでとうの気持ちのいいね<%= image_tag('favorited.png', style: "max-width: 30px; min-height: 30px;") %>を贈ってみてくださいね<br><br>
-            </p>
+          <div class="sub-text">
+            <p>今日、お子様と手をつなぎましたか？<br><br>
+            今日、新しくできるようになったことは？<br><br>
+            今日、気付いたら卒業していたことは？<br><br></p>
           </div>
         </div>
         
@@ -39,7 +24,6 @@
             <div class="button-wrap">
               <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info" %>
               <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info" %>
-              <%= link_to "Topに戻る", root_path, class: "btn btn-outline-info" %>
             </div>
           </div>
           <div class="row justify-content-center">

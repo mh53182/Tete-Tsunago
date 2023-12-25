@@ -23,18 +23,3 @@
 
 
 
-
-
-
-<h2>Follower Users</h2>
-
-<% if @users.exists? %>
-  <% @users.each do |user| %>
-    <%= user.name %>
-  <% end %>
-  <%#= render "index", users: @users %>
-  
-  
-<% else %>
-  <P>ユーザーはいません</P>
-<% end %>

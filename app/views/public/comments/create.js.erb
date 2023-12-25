@@ -1,3 +1,4 @@
 $('#comment_count').html("<%= @post.comments.count %>");
+$("#comments-error").empty();
 $('#post-comments').html("<%= j(render "public/comments/comments", post: @post) %>");
 $("textarea").val('');
