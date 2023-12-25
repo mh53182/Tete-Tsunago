@@ -6,7 +6,7 @@
   <% if posts.exists? %>
     <% posts.each do |post| %>
       <div class="col mb-4 d-flex justify-content-center">
-        <div class="card mt-3 shadow" style="max-width: 500px;">
+        <div class="card mt-3 shadow" style="width: 500px;">
           <div class="row g-0">
             <div class="col-md-4">
               <%= link_to post_path(post.id), remote: true do %>
@@ -21,43 +21,45 @@
                     <%= post.user.name %>
                   <% end %>
                 </h5>
-                <p class="card-text"><%= post.body %></p>
-                <p class="card-text">
-                  <small class="text-body-secondary">
-                    <table class="table table-borderless px-1">
-                      <tr>
-                        <td>カテゴリ：<%= post.category_i18n %></td>
-                        <td>
-                          <% if post.child.present? %>
-                            お子様：<%= post.child.nickname %>
-                          <% end %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td id="favorite_buttons_<%= post.id %>">
-                          <%= render "public/favorites/favorite", post: post %>
-                        </td>
-                        <td>
-                          <p>
-                            コメント（<span id="comment_count"><%= post.comments.count %></span>）
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-                        <td>
-                          <% if post.user == current_user %>
-                            <%= link_to "編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %>
-                            <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
-                          <% end %>
-                        </td>
-                      </tr>
-                    </table>
-                  </small>
-                </p>
+                <p class="card-text"><%= post.body.truncate(100) %></p>
               </div>
             </div>
           </div>
+          <p class="card-text">
+            <small class="text-body-secondary">
+              <table class="table table-borderless px-1">
+                <tr>
+                  <td>投稿日：'<%= post.created_at.strftime('%y/%m/%d') %></td>
+                  <td>カテゴリ：<%= post.category_i18n %></td>
+                  <td>
+                    <% if post.child.present? %>
+                      お子様：<%= post.child.nickname %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="favorite_buttons_<%= post.id %>">
+                    <%= render "public/favorites/favorite", post: post %>
+                  </td>
+                  <td>
+                    <p>
+                      <%= link_to post_path(post.id), remote: true do %>
+                        コメント（<span id="comment_count"><%= post.comments.count %></span>）
+                      <% end %>
+                    </p>
+                  </td>
+                  <td>
+                    <% if post.user == current_user %>
+                      <%= link_to "編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %>
+                      <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+            </small>
+          </p>
+
+
         </div>
       </div>
     <% end %>

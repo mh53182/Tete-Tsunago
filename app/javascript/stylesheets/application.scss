@@ -139,15 +139,40 @@ td.comment-nowrap {
   white-space: nowrap;
 }
 
+// 画像フォームカスタマイズ
+.image_input_btn{
+  display: block;
+  background-color: #64cc83;
+  border-color: #64cc83;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 40px;
+  padding-top: 2px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+}
+
+.image_input_btn:hover, .image_input_btn:focus, {
+    background: #9fe3b3;
+    border-color: #64cc83;
+    color: #ffffff;
+}
+
+.image_form{
+  display: none;
+}
+
+// ボタンを丸める
 .btn {
   border-radius: 40px;
 }
 
 // ボタン色カスタマイズ-info
 .btn-info {
-    background: #9471B6; //ボタンの背景色
+    background: #9471B6;
     border-color: #885bb5;
-    color: #ffffff; //ボタンのテキストの色
+    color: #ffffff;
 }
 
 .btn-info:hover, .btn-info:focus,
@@ -160,9 +185,9 @@ td.comment-nowrap {
 .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover,
 .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus,
 .btn-info.disabled.focus, .btn-info[disabled].focus, fieldset[disabled] .btn-info.focus {
-    background: #9a7fb5; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    background: #9a7fb5;
     border-color: #885bb5;
-    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    color: #ffffff;
 }
 
 .btn-info:not(:disabled):not(.disabled):active,
@@ -183,9 +208,9 @@ td.comment-nowrap {
 
 // ボタン色カスタマイズ-danger
 .btn-danger {
-    background: #E39270; //ボタンの背景色
+    background: #E39270;
     border-color: #e3845b;
-    color: #ffffff; //ボタンのテキストの色
+    color: #ffffff;
 }
 
 .btn-danger:hover, .btn-danger:focus,
@@ -198,9 +223,9 @@ td.comment-nowrap {
 .btn-danger.disabled:hover, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger:hover,
 .btn-danger.disabled:focus, .btn-danger[disabled]:focus, fieldset[disabled] .btn-danger:focus,
 .btn-danger.disabled.focus, .btn-danger[disabled].focus, fieldset[disabled] .btn-danger.focus {
-    background: #e3b39f; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    background: #e3b39f;
     border-color: #e3845b;
-    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    color: #ffffff;
 }
 
 .btn-danger:not(:disabled):not(.disabled):active,
@@ -221,9 +246,9 @@ td.comment-nowrap {
 
 // ボタン色カスタマイズ-success
 .btn-success {
-    background: #64cc83; //ボタンの背景色
+    background: #64cc83;
     border-color: #64cc83;
-    color: #ffffff; //ボタンのテキストの色
+    color: #ffffff;
 }
 
 .btn-success:hover, .btn-success:focus,
@@ -236,9 +261,9 @@ td.comment-nowrap {
 .btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover,
 .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus,
 .btn-success.disabled.focus, .btn-success[disabled].focus, fieldset[disabled] .btn-success.focus {
-    background: #9fe3b3; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    background: #9fe3b3;
     border-color: #64cc83;
-    color: #ffffff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    color: #ffffff;
 }
 
 .btn-success:not(:disabled):not(.disabled):active,
@@ -259,9 +284,9 @@ td.comment-nowrap {
 
 // ボタン色カスタマイズ-warning
 .btn-warning {
-    background: #F4D56E; //ボタンの背景色
+    background: #F4D56E;
     border-color: #f5cd49;
-    color: #5e432e; //ボタンのテキストの色
+    color: #5e432e;
 }
 
 .btn-warning:hover, .btn-warning:focus,
@@ -274,9 +299,9 @@ td.comment-nowrap {
 .btn-warning.disabled:hover, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning:hover,
 .btn-warning.disabled:focus, .btn-warning[disabled]:focus, fieldset[disabled] .btn-warning:focus,
 .btn-warning.disabled.focus, .btn-warning[disabled].focus, fieldset[disabled] .btn-warning.focus {
-    background: #F5de93; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    background: #F5de93;
     border-color: #f5cd49;
-    color: #5e432e; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    color: #5e432e;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active,
@@ -296,7 +321,7 @@ td.comment-nowrap {
 }
 
 // 見出しのアクセントカラー_グリーン
-h2, h3, h4 {
+h2, h3, h4,h5 {
   position: relative;
   display: inline-block;
 }
@@ -313,7 +338,7 @@ h2::after,h3::after {
   z-index: -1;
 }
 
-// 見出しのアクセントカラー_イエロー
+// 見出しのアクセントカラー_オレンジ
 h4::after {
   content: "";
   position: absolute;
@@ -322,6 +347,18 @@ h4::after {
   left: 0;
   top: 50%;
   background: linear-gradient(to right, #e39270, transparent);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+h5::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 0.8em;
+  left: 0;
+  top: 50%;
+  background: linear-gradient(to right, #f4d56e, transparent);
   border-radius: 10px;
   z-index: -1;
 }

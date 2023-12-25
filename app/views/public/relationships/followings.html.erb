@@ -3,19 +3,23 @@
     <!--サイドバー-->
     <div class="col-md-3" style="min-height:100vh" >
       <%= render "public/posts/form", post: @post %>
-      <h5 class="mt-4"><%= @user.name %>さんが</h5><h5>フォローしているユーザー</h5>
+      <h5 class="mt-4"><%= @user.name %>さんが</h5><br>
+      <h5>フォローしているユーザー</h5>
       <%= render "public/users/index", users: @users %>
     </div>
     
     <!--メイン-->
     <div class="col-md-8 offset-md-1">
-      <div class="col-md-12">
-        <h3><%= @user.name %>さんが フォローしているユーザーの投稿</h3>
-        <div class="row">
-          <div class="col-md-12">
-            <%= render "public/posts/index", posts: @posts %>
-          </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h3><%= @user.name %>さんが フォローしているユーザーの投稿</h3>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= render "public/posts/index", posts: @posts %>
+        </div>
+      </div>
       </div>
     </div>
   </div>

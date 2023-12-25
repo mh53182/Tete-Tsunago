@@ -4,35 +4,35 @@
       <h3>投稿内容編集</h3>
 
       <%= form_with model: @post do |f| %>
-        <%= render 'layouts/errors', obj: f.object %>
-        
+        <%= render "layouts/errors", obj: f.object %>
+
         <div class="form-group mt-5">
-          <%= f.label :body, "本文" %>
-          <%= f.text_area :body %>
+          <%#= f.label :body, "本文" %>
+          <%= f.text_area :body, :size=>"30x6", placeholder:"本文は空欄にできません" %>
         </div>
-        
-        <div class="form-group mt-5">
-          <%= f.label :post_image, "画像" %>
-          <%= f.file_field :post_image, accept: "image/*" %>
-        </div>
-        
+
         <div class="form-group mt-5">
           <%= f.label :category, "カテゴリ" %>
           <%= f.select :category,
                       Post.categories.keys.map { |k| [I18n.t("enums.post.category.#{k}"), k] },
                       { selected: "everyday" } %>
         </div>
-        
+
         <div class="form-group mt-5">
-          <%= f.label :child_id, "お子様" %>
-          <%= f.collection_select :child_id, 
-                                 current_user.children, :id, :nickname, include_blank: "選択してください" %>
+          <%= f.label :child_id, "お子様タグ（任意）" %>
+          <%= f.collection_select :child_id,
+                                 current_user.children, :id, :nickname, include_blank: "タグなし" %>
         </div>
-        
-        <div class="form-group mt-5">
+
+        <div class="form-group mt-5 text-center">
+          <%= f.label :post_image, "画像を追加 / 変更", class: "image_input_btn" %>
+          <%= f.file_field :post_image, accept: "image/*", class: "image_form" %>
+        </div>
+
+        <div class="form-group mt-5 text-center">
           <%= f.submit "更新する", class: "btn btn-info" %>
         </div>
-        
+
       <% end %>
     </div>
   </div>

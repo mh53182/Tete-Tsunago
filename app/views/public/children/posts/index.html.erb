@@ -5,7 +5,7 @@
       <%= render "public/posts/form", post: @post %>
 
       <div class="menu mt-4">
-        <button type="button" class="btn btn-info btn-block"
+        <button type="button" class="btn btn-danger btn-block"
                 data-toggle="collapse" data-target="#collapseChildren"
                 aria-expanded="false" aria-controls="collapseChildren">
           お子様情報
@@ -16,7 +16,10 @@
               <ul>
                 <% @user.children.each do |child| %>
                   <li>
-                    ・<%= child.nickname %> <%= link_to "投稿を見る", child_posts_path(child) %>
+                    ・<%= child.nickname %>
+                  </li>
+                  <li>
+                    <%= link_to "投稿を見る", child_posts_path(child), class: "btn btn-warning btn-sm" %>
                     <% if current_user == @user %>
                       <%= link_to "（ニックネーム編集）", edit_child_path(child) %>
                     <% end %>
@@ -27,12 +30,12 @@
               <p>登録されていません</p>
             <% end %>
             <% if current_user == @user %>
-              <%= link_to "お子様情報登録", new_child_path, class: "btn btn-info btn-sm" %>
+              <%= link_to "お子様情報登録", new_child_path, class: "btn btn-success btn-sm" %>
             <% end %>
           </div>
         </div>
-  
-        <button type="button" class="btn btn-info btn-block mt-2"
+
+        <button type="button" class="btn btn-warning btn-block mt-2"
                 data-toggle="collapse" data-target="#collapseSearch"
                 aria-expanded="false" aria-controls="collapseSearch">
           検索
@@ -44,11 +47,11 @@
         </div>
       </div>
     </div>
-    
+
     <!--メイン-->
     <div class="col-md-8 offset-md-1">
       <div class="col-md-12">
-        <h3><%= @child.nickname %> についての投稿</h3>
+        <h3><%= @user.name %>さんちの <%= @child.nickname %> についての投稿</h3>
         <div class="row mt-4">
           <div class="col-md-12">
             <%= render "public/posts/index", posts: @posts %>

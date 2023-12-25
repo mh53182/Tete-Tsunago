@@ -13,7 +13,7 @@
               <%= render "public/shared/error_messages", resource: resource %>
             
               <div class="field">
-                <%= f.label :name %><br />
+                <%= f.label :name, "名前（2～20文字）" %><br />
                 <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
               </div>
             
@@ -36,7 +36,7 @@
               </div>
             
               <div class="actions mt-3">
-                <%= f.submit "登録", class: "btn btn-info" %>
+                <%= f.submit "登録", class: "btn btn-danger" %>
               </div>
             <% end %>
             

@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   scope :by_category, ->(category) { where(category: category) if category.present? }
 
   def get_post_image
-    (post_image.attached?) ? post_image : 'no_post_image.jpg'
+    (post_image.attached?) ? post_image : 'no_post_image.png'
   end
 
   def favorited_by?(user)
