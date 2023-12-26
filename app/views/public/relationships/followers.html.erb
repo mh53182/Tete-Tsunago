@@ -5,6 +5,16 @@
       <%= render "public/posts/form", post: @post %>
       <!--<h5 class="mt-4"><%#= @user.name %>さんが フォローしているユーザー</h5>-->
       <%#= render "public/users/index", users: @users %>
+      <button type="button" class="btn btn-warning btn-block mt-2"
+              data-toggle="collapse" data-target="#collapseSearch"
+              aria-expanded="false" aria-controls="collapseSearch">
+        <i class="fa-solid fa-magnifying-glass"></i> 検索
+      </button>
+      <div class="collapse" id="collapseSearch">
+        <div class="card card-body">
+          <%= render "public/searches/form" %>
+        </div>
+      </div>
     </div>
 
     <!--メイン-->
