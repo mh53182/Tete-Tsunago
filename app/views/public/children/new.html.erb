@@ -4,17 +4,24 @@
       <h3>お子様新規登録</h3>
       <%= form_with model: @child do |f| %>
         <%= render "layouts/errors", obj: f.object %>
+        
         <div class="form-group mt-5">
-          <%= f.label :nickname, "ニックネーム（皆さんに呼ばれたい名前で登録して）" %>
+          <%= f.label :nickname, "ニックネーム" %>
           <%= f.text_field :nickname %>
+          <p class="info">
+            （皆さんに呼んでほしい名前で登録してください）
+          </p>
         </div>
+        
         <div class="form-group">
           <%= f.label :birthday, "生年月日（任意）" %>
           <%= f.date_field :birthday %>
         </div>
+        
         <div class="form-group text-center">
           <%= f.submit "登録", class: "btn btn-info" %>
         </div>
+        
       <% end %>
     </div>
   </div>
