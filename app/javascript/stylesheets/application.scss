@@ -84,9 +84,24 @@ footer {
   display: contents;
 }
 
-// 入力フォーム用説明文
-.info {
-   font-size: 12px;
+// 入力フォーム用説明文、モーダル内カテゴリ等表示
+.info, .modal-sub-text {
+   font-size: 14px;
+}
+
+// kaminariのカスタマイズ
+.first, .last, .next, .prev, .page {
+  padding: 2px 10px;
+  margin: 7px;
+  background: #F4D56E;
+  border-radius: 10px;
+}
+
+.current {
+  padding: 2px 10px;
+  margin: 7px;
+  background: #e39270;
+  border-radius: 10px;
 }
 
 // モーダルウィンドウ
@@ -353,6 +368,7 @@ h4::after {
   z-index: -1;
 }
 
+// 見出しのアクセントカラー_イエロー
 h5::after {
   content: "";
   position: absolute;

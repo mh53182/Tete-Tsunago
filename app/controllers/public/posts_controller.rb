@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
     end
 
     # 上記クエリにカテゴリ絞り込みがある場合は実施し、新着順に表示
-    @posts = base_query.by_category(params[:category]).order(created_at: :desc).page(params[:page]).per(20)
+    @posts = base_query.by_category(params[:category]).order(created_at: :desc).page(params[:page]).per(2)
   end
 
   def show

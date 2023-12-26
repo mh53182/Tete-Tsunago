@@ -22,21 +22,21 @@
 
           <div class="row mt-3">
             <div class="col-md-3">
-              投稿日：'<%= post.created_at.strftime('%y/%m/%d') %>
+              <p class="modal-sub-text">投稿日：'<%= post.created_at.strftime('%y/%m/%d') %></p>
             </div>
 
             <div class="col-md-3">
-              <p>カテゴリ：<%= post.category_i18n %></p>
+              <p class="modal-sub-text">カテゴリ：<%= post.category_i18n %></p>
             </div>
 
             <% if post.child.present? %>
               <div class="col-md-3">
-                <p>お子様：<%= post.child.nickname %></p>
+                <p class="modal-sub-text">お子様：<%= post.child.nickname %></p>
               </div>
             <% end %>
 
             <div class="col-md-3">
-              <span id="favorite_buttons_<%= post.id %>_modal">
+              <span id="favorite_buttons_<%= post.id %>_modal" class="modal-sub-text">
                 <%= render "public/favorites/favorite", post: @post %>
               </span>
             </div>
