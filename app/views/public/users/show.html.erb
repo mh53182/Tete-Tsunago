@@ -5,9 +5,11 @@
       <%= render "public/posts/form", post: @post %>
 
       <div class="menu mt-4">
-        <%= link_to "いいねした投稿一覧", favorites_user_path(@user), class: "btn btn-warning btn-block" %>
+        <%= link_to favorites_user_path(@user), class: "btn btn-warning btn-block" do %>
+          <%= image_tag('favorited.png', style: "max-width: 25px; min-height: 25px;") %> いいねした投稿一覧
+        <% end %>
         <%= link_to "フォローしているユーザー", followings_relationship_path(@user), class: "btn btn-danger btn-block" %>
-        <%= link_to "フォローされているユーザー", followers_relationship_path(@user), class: "btn btn-warning btn-block" %>
+        <%= link_to "フォローされているユーザー", followers_relationship_path(@user), class: "btn btn-warning btn-block"%>
 
         <button type="button" class="btn btn-danger btn-block"
                 data-toggle="collapse" data-target="#collapseChildren"
@@ -42,7 +44,7 @@
         <button type="button" class="btn btn-warning btn-block mt-2"
                 data-toggle="collapse" data-target="#collapseSearch"
                 aria-expanded="false" aria-controls="collapseSearch">
-          検索
+          <i class="fa-solid fa-magnifying-glass"></i> 検索
         </button>
         <div class="collapse" id="collapseSearch">
           <div class="card card-body">
