@@ -13,10 +13,10 @@ class Post < ApplicationRecord
 
   # 公開アカウントによる投稿の取得
   scope :from_public_users, -> { joins(:user).where(users: { is_public: true }) }
-  
+
   # 有効アカウントによる投稿の取得
   scope :from_active_users, -> { joins(:user).where(users: { is_active: true }) }
-  
+
   # フォローしているユーザーの投稿を取得
   scope :from_followings_of, ->(user) { where(user: user.followings) }
 
@@ -38,11 +38,5 @@ class Post < ApplicationRecord
     query
   end
 
-  # def self.search_for(keyword, category = nil)
-  #   query = all
-  #   query = where("body LIKE ?", "%" + keyword + "%")if keyword.present?
-  #   query = query.by_category(category) if category.present?
-  #   query
-  # end
 
 end
