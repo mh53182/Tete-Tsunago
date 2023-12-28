@@ -5,6 +5,12 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    # 非公開アカウントおよび退会アカウントのぷろへの直アクセスを制限
+    unless @user.is_active && (@user.is_public || @user == current_user)
+      redirect_to user_path(current_user), alert: "アクセスできません"
+    end
+
     @post = Post.new
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(20)
   end
@@ -33,7 +39,7 @@ class Public::UsersController < ApplicationController
     @posts = Post.joins(:favorites).where(favorites: { user_id: @user.id })
                  .from_active_users.from_public_users
                  .order(created_at: :desc).page(params[:page]).per(20)
-                 
+
     @post = Post.new
   end
 

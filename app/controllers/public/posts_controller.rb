@@ -21,9 +21,9 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
 
-    # 非公開アカウントの投稿詳細への直アクセスを制限
-    unless @user.is_public || @user == current_user
-      redirect_to posts_path, alert: "この投稿は非公開です"
+    # 非公開アカウントおよび退会アカウントの投稿詳細への直アクセスを制限
+    unless @user.is_active && (@user.is_public || @user == current_user)
+      redirect_to posts_path, alert: "アクセスできません"
     end
     @comment = Comment.new
   end
