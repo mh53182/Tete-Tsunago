@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    # 非公開アカウントおよび退会アカウントのぷろへの直アクセスを制限
+    # 非公開アカウントおよび退会アカウントのプロフィールへの直アクセスを制限
     unless @user.is_active && (@user.is_public || @user == current_user)
       redirect_to user_path(current_user), alert: "アクセスできません"
     end

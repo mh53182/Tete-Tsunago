@@ -22,7 +22,7 @@
 - 他人が投稿した成長記録をお祝いするとき
 
 ## 設計書
-未定
+- ER図
 
 ## 開発環境
 - OS：Microsoft Windows 11, Version 22H2
