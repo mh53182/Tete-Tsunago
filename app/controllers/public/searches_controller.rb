@@ -28,7 +28,7 @@ class Public::SearchesController < ApplicationController
     @post = Post.new
 
     # 検索結果がゼロの場合のビューでの表示に使用
-    @records.count
+    # @records.count
   end
 
   private
