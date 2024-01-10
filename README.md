@@ -23,7 +23,7 @@
 
 ## 設計書
 - ER図
-![ER図](assets/images/ERD.png)
+![ER図](app/assets/images/ERD.png)
 
 ## 開発環境
 - OS：Microsoft Windows 11, Version 22H2
