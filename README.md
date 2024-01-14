@@ -24,9 +24,12 @@
 ## 設計書
 - ER図
 ![ER図](app/assets/images/ERD.png)
+- AWS構成図
+![AWS構成図](app/assets/images/AWS_Network_Diagram.png)
+- [インフラ設計書](https://docs.google.com/spreadsheets/d/1-WK3dRqq2QA5w3LQOMSQHu-2NkhRPsSgM5uuwsBDHog/edit?usp=sharing)
 
 ## 開発環境
-- OS：Microsoft Windows 11, Version 22H2
+- OS：Linux(AmazonLinux2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
