@@ -6,11 +6,11 @@ var mask = document.getElementById('mask');
 <!--モーダルの中身をshowビューに置き換える-->
 modal.innerHTML = '<%= escape_javascript(render 'public/posts/show', post: @post, comments: @comments, user: @user, comment: @comment ) %>';
 
-<!--hiddenクラスを消してモーダルとマスクを表示-->
+<!--CSSのモーダルhiddenクラスを削除してモーダルとマスクを表示-->
 modal.classList.remove('hidden');
 mask.classList.remove('hidden');
 
-<!--モーダルの外側（マスク）をクリックするとhiddenクラスが書き込まれ、モーダルとマスクが再び非表示になる-->
+<!--モーダルの外側クリックでhiddenクラスを追加しモーダルとマスクを非表示-->
 mask.addEventListener('click', () => {
   modal.classList.add('hidden');
   mask.classList.add('hidden');

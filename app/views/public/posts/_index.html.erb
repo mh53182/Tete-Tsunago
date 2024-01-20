@@ -29,9 +29,9 @@
             <small class="text-body-secondary">
               <table class="table table-borderless px-1">
                 <tr>
-                  <td>投稿日：'<%= post.created_at.strftime('%y/%m/%d') %></td>
-                  <td>カテゴリ：<%= post.category_i18n %></td>
-                  <td>
+                  <td class="post-sub-text">投稿日：'<%= post.created_at.strftime('%y/%m/%d') %></td>
+                  <td class="post-sub-text">カテゴリ：<%= post.category_i18n %></td>
+                  <td class="post-sub-text">
                     <% if post.child.present? %>
                       お子様：<%= post.child.nickname %>
                     <% end %>
@@ -42,13 +42,13 @@
                     <%= render "public/favorites/favorite", post: post %>
                   </td>
                   <td>
-                    <p>
+                    <p class="post-sub-text">
                       <%= link_to post_path(post.id), remote: true do %>
                         コメント（<span id="comment_count"><%= post.comments.count %></span>）
                       <% end %>
                     </p>
                   </td>
-                  <td>
+                  <td class="post-sub-text">
                     <% if post.user == current_user %>
                       <%= link_to "編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %>
                       <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>

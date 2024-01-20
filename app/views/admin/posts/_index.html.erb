@@ -29,22 +29,22 @@
             <small class="text-body-secondary">
               <table class="table table-borderless px-1">
                 <tr>
-                  <td>投稿日：'<%= post.created_at.strftime('%y/%m/%d') %></td>
-                  <td>カテゴリ：<%= post.category_i18n %></td>
-                  <td>
+                  <td class="post-sub-text">投稿日：'<%= post.created_at.strftime('%y/%m/%d') %></td>
+                  <td class="post-sub-text">カテゴリ：<%= post.category_i18n %></td>
+                  <td class="post-sub-text">
                     <% if post.child.present? %>
                       お子様：<%= post.child.nickname %>
                     <% end %>
                   </td>
                 </tr>
                 <tr>
-                  <td>いいね（<%= post.favorites.count %>）</td>
-                  <td>
+                  <td class="post-sub-text">いいね（<%= post.favorites.count %>）</td>
+                  <td class="post-sub-text">
                     <%= link_to admin_post_path(post.id), remote: true do %>
                       コメント（<%= post.comments.count %>）
                     <% end %>
                   </td>
-                  <td>
+                  <td class="post-sub-text">
                     <%= link_to "削除", admin_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %>
                   </td>
                 </tr>
