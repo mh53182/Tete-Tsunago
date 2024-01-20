@@ -71,6 +71,14 @@ footer {
   background-position: center;
 }
 
+// Topマスク
+.top-content {
+  width: 60%;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
 // メインビジュアル（アバウトページへ移行）を表示した際にヘッダー・フッターの隙間を無くす
 .main-visual {
   background-image: url('../images/about.jpg');
