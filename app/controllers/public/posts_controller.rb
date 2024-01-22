@@ -66,7 +66,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :child_id, :body, :category, :post_image, :start_time)
+    params.require(:post).permit(:user_id, :child_id, :body, :category, :post_image)
   end
 
   # URL指定による他人の投稿編集制限

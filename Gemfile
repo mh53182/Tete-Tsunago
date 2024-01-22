@@ -63,8 +63,6 @@ gem 'enum_help'
 
 gem 'jquery-rails'
 
-gem 'simple_calendar'
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
