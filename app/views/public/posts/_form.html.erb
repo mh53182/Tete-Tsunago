@@ -7,7 +7,8 @@
 
     <div class="form-group mt-2">
       <%#= f.label :body %>
-      <%= f.text_area :body, :size=>"30x6", placeholder:"今日のお子様の様子は？" %>
+      <!--改行を含むプレースホルダをヘルパーに-->
+      <%= f.text_area :body, :size=>"30x6", placeholder: placeholder_text %>
     </div>
 
     <div class="form-group">
