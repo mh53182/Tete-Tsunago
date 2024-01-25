@@ -14,6 +14,9 @@
       <td style="word-break: break-word">
         <%= comment.body %>
       </td>
+      <td>
+        <p>'<%= comment.created_at.strftime('%y/%m/%d') %></p>
+      </td>
       <td class="comment-nowrap">
         <% if comment.user == current_user %>
           <%= link_to "削除", post_comment_path(post.id, comment.id), method: :delete,

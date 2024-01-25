@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_unless_post_auther, only: [:edit, :update]
+  before_action :redirect_unless_post_auther, only: [:edit, :update, :destroy]
 
   def index
     @post = Post.new
