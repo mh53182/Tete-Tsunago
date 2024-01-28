@@ -1,4 +1,5 @@
-# Tete-Tsunago【てて つなご】
+# Tete-Tsunago
+![てて つなご](app/assets/images/logo.jpg)
 ​
 ## サイト概要
 ### サイトテーマ
