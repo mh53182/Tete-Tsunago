@@ -1,40 +1,50 @@
-<div class="container-fluid main-container d-flex align-items-center">
-  <div class="row w-100">
-    <div class="col-md-7 d-flex align-items-center justify-content-center flex-column">
-      <div class="top-content">
-        <div class="row justify-content-center">
-          <div class="main-title mb-5">
-            <h1><strong>てて つなご</strong></h1>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="sub-text">
-            <h5>
-              今日、お子様と手をつなぎましたか？<br><br>
-              今日、新しくできるようになったことは？<br><br>
-              今日、気付いたら卒業していたことは？<br><br>
-            </h5>
-          </div>
-        </div>
-  
-        <% if user_signed_in? %>
-          <div class="row justify-content-center">
-            <%= link_to "マイページへ", user_path(current_user), class: "btn btn-info" %>
-          </div>
-        <% else %>
-          <div class="row justify-content-center">
-            <div class="button-wrap">
-              <%= link_to "ログイン", new_user_session_path, class: "btn btn-warning" %>
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success ml-3" %>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="button-wrap mt-3">
-              <%= link_to "ゲストログイン(お試し用)", users_guest_sign_in_path, method: :post, class: "btn btn-info" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <%= image_tag 'top_1.jpg' %>
     </div>
+    <div class="swiper-slide">
+      <%= image_tag 'top_2.jpg' %>
+    </div>
+    <div class="swiper-slide">
+      <%= image_tag 'top_3.jpg' %>
+    </div>
+    <div class="swiper-slide">
+      <%= image_tag 'top_4.jpg' %>
+    </div>
+    <!-- ページネーション -->
+    <div class="swiper-pagination"></div>
+    <!-- ナビゲーションボタン -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <!--全画面Swiperに重ねてサイト名等表示-->
+  <div class="fixed-text">
+
+    <div class="main-title mb-5">
+      <h1><strong>てて つなご</strong></h1>
+    </div>
+
+    <div class="sub-text">
+      <p>
+        今日、お子様と手をつなぎましたか？<br><br>
+        今日、新しくできるようになったことは？<br><br>
+        今日、気付いたら卒業していたことは？<br><br>
+      </p>
+    </div>
+
+    <% if user_signed_in? %>
+      <%= link_to "マイページへ", user_path(current_user), class: "btn btn-warning" %>
+    <% else %>
+      <div class="button-wrap">
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-warning" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success ml-3" %>
+      </div>
+      <div class="button-wrap my-3">
+        <%= link_to "ゲストログイン(お試し用)", users_guest_sign_in_path, method: :post, class: "btn btn-info" %>
+      </div>
+    <% end %>
+
   </div>
 </div>
