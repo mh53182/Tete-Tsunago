@@ -44,7 +44,7 @@
                   <td>
                     <p class="post-sub-text">
                       <%= link_to post_path(post.id), remote: true do %>
-                        コメント（<span id="comment_count"><%= post.comments.count %></span>）
+                        コメント（<span id="comment_count_<%= post.id %>"><%= post.comments.count %></span>）
                       <% end %>
                     </p>
                   </td>
