@@ -2,7 +2,7 @@
   <div id ="comments-error"></div>
   <%= form_with model:[post, comment], local: false do |f| %>
     <%= render "layouts/errors", obj: f.object %>
-    <%= f.text_area :body, rows: "3", class: "w-100", id: "comment_textarea", placeholder: "コメントを入力できます" %>
+    <%= f.text_area :body, rows: "3", class: "w-100", id: "comment_textarea", placeholder: "コメントを入力できます（150文字まで）" %>
     <%= f.submit "送信", class: "btn btn-success btn-sm" %>
   <% end %>
 </div>
